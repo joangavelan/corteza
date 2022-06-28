@@ -1,8 +1,9 @@
-import Home from '../pages/index';
-import { ComponentStory } from '@storybook/react'
+import ButtonComp from '../components/Button'
+import Home from '../pages/index'
 
 export default {
-  title: 'UI',
+  title: 'UI'
 }
 
-export const HomePage: ComponentStory<typeof Home> = (args) => <Home {...args} />
+export const Button = () => <ButtonComp />
+export const HomePage = () => <Home />
