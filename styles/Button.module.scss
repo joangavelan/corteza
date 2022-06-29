@@ -1,5 +1,8 @@
+@import './variables';
+
 .button {
-  background-color: #4CAF50;
+  font-family: $font-family-secondary;
+  background-color: $color-secondary-800;
   border: none;
   color: white;
   padding: 15px 32px;

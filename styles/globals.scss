@@ -1,3 +1,15 @@
+@font-face {
+  font-family: 'Nimbus Sans';
+  src: url('../public/fonts/NimbusSanL-Reg.otf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Nimbus Sans';
+  src: url('../public/fonts/NimbusSanL-Bol.otf');
+  font-weight: 600;
+}
+
 html,
 body {
   padding: 0;
