@@ -1,12 +1,24 @@
 @font-face {
   font-family: 'Nimbus Sans';
-  src: url('../public/fonts/NimbusSanL-Reg.otf');
+  src: url('../public/fonts/Nimbus Sans/NimbusSanL-Reg.otf');
   font-weight: 500;
 }
 
 @font-face {
   font-family: 'Nimbus Sans';
-  src: url('../public/fonts/NimbusSanL-Bol.otf');
+  src: url('../public/fonts/Nimbus Sans/NimbusSanL-Bol.otf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Tinos';
+  src: url('../public/fonts/Tinos/Tinos-Regular.ttf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Tinos';
+  src: url('../public/fonts/Tinos/Tinos-Bold.ttf');
   font-weight: 600;
 }
 
