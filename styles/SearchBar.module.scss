@@ -1,0 +1,10 @@
+@import './variables';
+@import './mixins';
+
+.searchBar {
+  @include search-bar-styles;
+
+  &::placeholder {
+    color: $color-gray-500;
+  }
+}
