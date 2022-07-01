@@ -12,7 +12,7 @@ const Template: ComponentStory<typeof SearchResult> = (args) => (
 
 export const Default = Template.bind({})
 Default.args = {
-  img: 'http://books.google.com/books/content?id=UH2e64rTh9UC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+  imgUrl: 'http://books.google.com/books/content?id=UH2e64rTh9UC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
   title:
     'Biology of Sport: Reports of methodological and experimental work on science of sport',
   author: 'Sara Johnson, Jodene Lynn Smith, and Paula Sorrell',
@@ -29,7 +29,7 @@ OneLineTitle.args = {
 export const NoImage = Template.bind({})
 NoImage.args = {
   ...Default.args,
-  img: undefined
+  imgUrl: undefined
 }
 
 export const NoRating = Template.bind({})

@@ -6,7 +6,7 @@ import { SearchResultType } from '../models/SearchResult.model'
 import SearchResultLoader from './loaders/SearchResultLoader'
 
 const SearchResult = ({
-  img,
+  imgUrl,
   title,
   rating,
   author,
@@ -15,10 +15,10 @@ const SearchResult = ({
   return !loading ? (
     <div className={styles.searchResult}>
       <div className={styles.imgContainer}>
-        {img && (
+        {imgUrl && (
           <Image
-            loader={() => img}
-            src={img}
+            loader={() => imgUrl}
+            src={imgUrl}
             alt='book cover'
             layout='fill'
             objectFit='cover'
