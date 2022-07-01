@@ -1,17 +1,6 @@
 @import './variables';
 
-@font-face {
-  font-family: 'Nimbus Sans';
-  src: url('../public/fonts/Nimbus Sans/NimbusSanL-Reg.otf');
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: 'Nimbus Sans';
-  src: url('../public/fonts/Nimbus Sans/NimbusSanL-Bol.otf');
-  font-weight: 600;
-}
-
+// Tines font
 @font-face {
   font-family: 'Tinos';
   src: url('../public/fonts/Tinos/Tinos-Regular.ttf');
@@ -24,7 +13,38 @@
   font-weight: 600;
 }
 
+// Inter font
+@font-face {
+  font-family: 'Inter';
+  src: url('../public/fonts/Inter/Inter-Light.ttf');
+  font-weight: 300;
+}
 
+@font-face {
+  font-family: 'Inter';
+  src: url('../public/fonts/Inter/Inter-Regular.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../public/fonts/Inter/Inter-Medium.ttf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../public/fonts/Inter/Inter-SemiBold.ttf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../public/fonts/Inter/Inter-Bold.ttf');
+  font-weight: 700;
+}
+
+// Elements
 html {
   font-size: 62.5%;
 }
@@ -47,5 +67,11 @@ a {
 
 input {
   outline: 0;
-  padding: 5px 8px;
+  padding: .8rem 1.2rem;
+}
+
+button {
+  font-size: 1.6rem;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
 }
