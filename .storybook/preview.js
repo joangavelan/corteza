@@ -1,4 +1,4 @@
-import '../styles/globals.scss'
+import '../styles/_globals.scss'
 
 import * as NextImage from 'next/image'
 
