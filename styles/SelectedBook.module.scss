@@ -1,0 +1,39 @@
+@import './variables';
+@import './mixins';
+
+.selectedBook {
+  @include search-bar-styles;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  padding-inline-end: 5rem;
+}
+
+p {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.bookTitle {
+  display: inline;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.removeIcon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 100%;
+  right: 0;
+  font-size: 2.1rem;
+  cursor: pointer;
+  transition: 0.25s;
+
+  &:hover {
+    color: $color-primary-900;
+  }
+}
