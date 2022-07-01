@@ -1,0 +1,86 @@
+@import './variables';
+
+$imageContainerWidth: 6rem;
+$imageContainerMarginRight: .8rem;
+$totalImageContainerWidth: $imageContainerWidth + $imageContainerMarginRight;
+
+.searchResult {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 45rem;
+  height: 10rem;
+  padding: 1rem;
+  border: 1px solid $color-secondary-300;
+  cursor: pointer;
+  color: $color-secondary-900;
+  background-color: white;
+
+  &:hover {
+    .bookTitle {
+      color: $color-primary-900;
+    }
+  }
+}
+
+.bookTitle {
+  font-size: 1.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.45;
+  transition: 0.15s;
+  margin-bottom: 5px;
+}
+
+.imgContainer {
+  position: relative;
+  margin-right: $imageContainerMarginRight;
+  width: $imageContainerWidth;
+  height: 8rem;
+  border-radius: 2px;
+  overflow: hidden;
+  background-color: $color-gray-300;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    z-index: 10;
+  }
+
+  &::after {
+    content: '100x130';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 7px;
+    color: $color-secondary-800;
+    font-weight: 300;
+  }
+}
+
+.content {
+  width: calc(100% - $totalImageContainerWidth);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+}
+
+.rating {
+  display: flex;
+  margin-right: 4px;
+  color: $color-primary-500;
+}
+
+.author {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1;
+}
