@@ -7,12 +7,12 @@
   display: flex;
   align-items: center;
   padding-inline-end: 5rem;
-}
-
-p {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  
+  p {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }
 
 .bookTitle {
