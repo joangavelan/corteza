@@ -1,4 +1,4 @@
-export interface SelectedBookType {
+export interface SelectedBookProps {
   title: string,
   author: string
 }
