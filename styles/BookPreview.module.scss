@@ -1,0 +1,49 @@
+@import './variables';
+
+$container-width: 45rem;
+
+.container {
+  max-width: $container-width;
+  display: grid;
+  place-items: center;
+  grid-gap: 1rem;
+}
+
+.imgContainer {
+  position: relative;
+  width: 10rem;
+  height: 15rem;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.meta {
+  max-width: $container-width; // neccesary for text-overflow (ellipsis) in .author to work
+  text-align: center;
+}
+
+.title {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rating {
+  display: flex;
+  font-size: 1.5rem;
+  color: $color-primary-500;
+  margin-right: 0.7rem;
+}
+
+.author {
+  font-size: 1.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
