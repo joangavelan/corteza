@@ -11,3 +11,9 @@
   padding: 0 1.5rem;
   color: $color-gray-900;
 }
+
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
