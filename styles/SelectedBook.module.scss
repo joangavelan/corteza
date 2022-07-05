@@ -3,22 +3,25 @@
 
 .selectedBook {
   @include search-bar-styles;
-  position: absolute;
+  position: relative;
   display: flex;
   align-items: center;
   padding-inline-end: 5rem;
-  
-  p {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
+}
+
+.meta {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .bookTitle {
   display: inline;
-  font-size: 1.5rem;
   font-weight: 600;
+}
+
+.bookAuthor {
+  display: inline;
 }
 
 .removeIcon {

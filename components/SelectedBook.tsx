@@ -1,15 +1,15 @@
 import React from 'react'
-import { SelectedBookType } from '../models/SelectedBook.model'
-import styles from '../styles/SelectedBook.module.scss'
+import { SelectedBookProps } from '@models'
+import styles from '@styles/SelectedBook.module.scss'
 import { IoClose } from 'react-icons/io5'
 
-const SelectedBook = ({ title, author }: SelectedBookType) => {
+const SelectedBook = ({ title, author }: SelectedBookProps) => {
   return (
     <div className={styles.selectedBook}>
-      <p>
-        <span className={styles.bookTitle}>{title} </span>
-        {author && <span className={styles.bookAuthor}>by {author}</span>}
-      </p>
+      <div className={styles.meta}>
+        <h4 className={styles.bookTitle}>{title} </h4>
+        {author && <p className={styles.bookAuthor}>by {author}</p>}
+      </div>
       <div className={styles.removeIcon}>
         <IoClose />
       </div>
