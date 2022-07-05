@@ -8,7 +8,7 @@ $totalImageContainerWidth: $imageContainerWidth + $imageContainerMarginRight;
   position: relative;
   display: flex;
   align-items: center;
-  width: 45rem;
+  max-width: 45rem;
   height: 10rem;
   padding: 1rem;
   border: 1px solid $color-secondary-300;
@@ -42,24 +42,6 @@ $totalImageContainerWidth: $imageContainerWidth + $imageContainerMarginRight;
   height: 8rem;
   border-radius: 2px;
   overflow: hidden;
-  background-color: $color-gray-300;
-
-  img {
-    width: 100%;
-    object-fit: cover;
-    z-index: 10;
-  }
-
-  &::after {
-    content: '100x130';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 7px;
-    color: $color-secondary-800;
-    font-weight: 300;
-  }
 }
 
 .content {

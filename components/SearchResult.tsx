@@ -15,16 +15,14 @@ const SearchResult = ({
   return !loading ? (
     <div className={styles.searchResult}>
       <div className={styles.imgContainer}>
-        {imgUrl && (
-          <Image
-            loader={() => imgUrl}
-            src={imgUrl}
-            alt='book cover'
-            layout='fill'
-            objectFit='cover'
-            priority
-          />
-        )}
+        <Image
+          loader={() => imgUrl || '/images/book-placeholder.svg'}
+          src={imgUrl || '/images/book-placeholder.svg'}
+          alt='book cover'
+          layout='fill'
+          objectFit='cover'
+          priority
+        />
       </div>
       <div className={styles.content}>
         <h3 className={styles.bookTitle}>{title}</h3>
