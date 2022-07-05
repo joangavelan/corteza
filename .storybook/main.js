@@ -25,6 +25,8 @@ module.exports = {
       '../components'
     )
     config.resolve.alias['@styles'] = path.resolve(__dirname, '../styles')
+    config.resolve.alias['@hooks'] = path.resolve(__dirname, '../hooks')
+    config.resolve.alias['@utils'] = path.resolve(__dirname, '../utils')
     return config
   }
 }
