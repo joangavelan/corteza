@@ -1,12 +1,8 @@
 @import './variables';
-
-$container-width: 45rem;
+@import './mixins';
 
 .container {
-  max-width: $container-width;
-  display: grid;
-  place-items: center;
-  grid-gap: 1rem;
+  max-width: 45rem;
 }
 
 .imgContainer {
@@ -15,10 +11,10 @@ $container-width: 45rem;
   height: 15rem;
   overflow: hidden;
   border-radius: 2px;
+  margin: 0 auto 1rem;
 }
 
 .meta {
-  max-width: $container-width; // neccesary for text-overflow (ellipsis) in .author to work
   text-align: center;
 }
 
@@ -43,7 +39,5 @@ $container-width: 45rem;
 
 .author {
   font-size: 1.5rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  @include ellipsis;
 }
