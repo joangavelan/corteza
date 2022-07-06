@@ -6,6 +6,6 @@ export interface Book {
   imgUrl?: string
   rating?: number
   currentPage?: number
-  publishedDate?: string
+  publishedYear?: string
   category?: string
 }
