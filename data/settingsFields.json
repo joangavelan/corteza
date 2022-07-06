@@ -1,0 +1,58 @@
+[
+  {
+    "id": "title",
+    "label": "Title",
+    "type": "text",
+    "placeholder": "Blue Economy",
+    "required": true
+  },
+  {
+    "id": "author",
+    "label": "Author",
+    "type": "text",
+    "placeholder": "Gunter Pauli",
+    "required": false
+  },
+  {
+    "id": "rating",
+    "label": "Rating",
+    "type": "number",
+    "placeholder": "4.9",
+    "required": false
+  },
+  {
+    "id": "imgUrl",
+    "label": "Image URL",
+    "type": "url",
+    "placeholder": "https://example.com/image.png",
+    "required": false
+  },
+  {
+    "id": "pageCount",
+    "label": "Page Count",
+    "type": "number",
+    "placeholder": "295",
+    "required": true
+  },
+  {
+    "id": "publishedYear",
+    "label": "Published Year",
+    "type": "number",
+    "placeholder": "2012",
+    "required": false
+  },
+  {
+    "id": "category",
+    "label": "Category",
+    "type": "text",
+    "placeholder": "Entrepreneurship",
+    "required": false
+  },
+  {
+    "id": "currentPage",
+    "label": "Current Page",
+    "type": "number",
+    "placeholder": "1",
+    "required": true
+  }
+]
