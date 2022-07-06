@@ -70,8 +70,21 @@ a {
 }
 
 input {
+  font-family: $font-family-secondary;
+  font-size: 1.5rem;
+  border-radius: 4px;
   outline: 0;
-  padding: .8rem 1.2rem;
+  padding: 1rem 1.2rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
 }
 
 button {
