@@ -1,0 +1,64 @@
+@import './variables';
+
+.container {
+  background-color: $color-secondary-800;
+  max-width: 65rem;
+  padding: 3rem;
+}
+
+.title {
+  font-family: $font-family-primary;
+  font-size: 3.5rem;
+  color: $color-secondary-50;
+  padding-bottom: 4rem;
+  text-decoration: underline;
+}
+
+.form {
+  display: grid;
+  grid-gap: 3rem;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  label {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-right: 1rem;
+    color: $color-secondary-50;
+    line-height: 1.65;
+
+    span {
+      margin-left: 5px;
+      color: $color-primary-300;
+    }
+  }
+
+  input {
+    color: $color-secondary-50;
+    border: none;
+    background-color: $color-secondary-600;
+    outline: 1px solid $color-secondary-600;
+    width: 100%;
+    max-width: 26rem;
+
+    @media only screen and (max-width: $breakpoint-mobile) {
+      max-width: 22rem;
+    }
+
+    &::placeholder {
+      color: $color-secondary-400;
+    }
+
+    &:focus {
+      outline: 1px solid $color-primary-400;
+    }
+  }
+
+  &:last-of-type {
+    margin-bottom: 1.2rem;
+  }
+}
