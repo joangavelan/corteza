@@ -1,15 +1,27 @@
 @import './variables';
 
 .button {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4.5rem;
   font-family: $font-family-secondary;
-  background-color: $color-secondary-800;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
+  font-weight: 600;
+  background-color: $color-primary-400;
+  color: $color-gray-900;
+  border: 1px solid $color-primary-400;
+  border-radius: 4px;
+  padding: 0 1.5rem;
+  transition: 0.25s;
+
+  &:hover {
+    background-color: $color-primary-100;
+    border-color: $color-primary-500;
+  }
+}
+
+.icon {
+  margin-left: 5px;
+  transform: translateY(0.7px);
 }
