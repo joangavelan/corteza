@@ -1,0 +1,14 @@
+@import './variables';
+
+.container {
+  width: max-content;
+  font-family: $font-family-primary;
+  font-size: 2.6rem;  
+  background-color: $color-secondary-800;
+  color: $color-secondary-50;
+}
+
+.name {
+  font-weight: 700;
+  margin-right: 7px;
+}
