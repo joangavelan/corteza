@@ -1,0 +1,12 @@
+import { ComponentMeta, ComponentStory } from '@storybook/react'
+import {{ titleCase name }} from '@components/{{ titleCase name }}'
+
+export default {
+  title: 'UI/{{ titleCase name }}',
+  component: {{ titleCase name }}
+} as ComponentMeta<typeof {{ titleCase name }}>
+
+const Template: ComponentStory<typeof {{ titleCase name }}> = () => <{{ titleCase name }} />
+
+export const Default = Template.bind({})
+Default.args = {}
