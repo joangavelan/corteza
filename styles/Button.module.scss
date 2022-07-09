@@ -1,11 +1,12 @@
 @import './variables';
 
 .button {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 4.5rem;
+  min-width: 20rem;
+  height: 5rem;
   font-family: $font-family-secondary;
   font-weight: 600;
   background-color: $color-primary-400;

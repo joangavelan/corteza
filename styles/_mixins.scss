@@ -3,9 +3,8 @@
 @mixin search-bar-styles {
   font-family: $font-family-secondary;
   width: 100%;
-  max-width: 45rem;
-  height: 4.5rem;
-  font-size: 1.5rem;
+  height: 5rem;
+  font-size: 1.7rem;
   border: 1px solid $color-gray-500;
   border-radius: 4px;
   padding: 0 1.5rem;
