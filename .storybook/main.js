@@ -28,6 +28,9 @@ module.exports = {
     config.resolve.alias['@hooks'] = path.resolve(__dirname, '../hooks')
     config.resolve.alias['@utils'] = path.resolve(__dirname, '../utils')
     config.resolve.alias['@data'] = path.resolve(__dirname, '../data')
+    config.resolve.alias['@zustand'] = path.resolve(__dirname, '../zustand')
+    config.resolve.alias['@adapters'] = path.resolve(__dirname, '../adapters')
+    config.resolve.alias['@services'] = path.resolve(__dirname, '../services')
     return config
   }
 }
