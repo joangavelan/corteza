@@ -1,4 +1,4 @@
-import SearchResult from '../components/SearchResult'
+import SearchResult from '@components/BookSearchResult'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 export default {
@@ -12,12 +12,12 @@ const Template: ComponentStory<typeof SearchResult> = (args) => (
 
 export const Default = Template.bind({})
 Default.args = {
-  imgUrl: 'http://books.google.com/books/content?id=UH2e64rTh9UC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+  imgUrl:
+    'http://books.google.com/books/content?id=UH2e64rTh9UC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
   title:
     'Biology of Sport: Reports of methodological and experimental work on science of sport',
   author: 'Sara Johnson, Jodene Lynn Smith, and Paula Sorrell',
-  rating: 3.7,
-  loading: false
+  rating: 3.7
 }
 
 export const OneLineTitle = Template.bind({})
@@ -32,12 +32,6 @@ NoImage.args = {
   imgUrl: undefined
 }
 
-export const NoRating = Template.bind({})
-NoRating.args = {
-  ...Default.args,
-  rating: undefined
-}
-
 export const NoAuthor = Template.bind({})
 NoAuthor.args = {
   ...Default.args,
@@ -49,9 +43,4 @@ NoRatingNoAuthor.args = {
   ...Default.args,
   rating: undefined,
   author: undefined
-}
-
-export const Loading = Template.bind({})
-Loading.args = {
-  loading: true
 }
