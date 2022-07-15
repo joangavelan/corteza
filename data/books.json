@@ -1,0 +1,276 @@
+[
+  {
+    "kind": "books#volume",
+    "id": "fhabaMVQ9wkC",
+    "etag": "q7zmcTzSGD8",
+    "selfLink": "https://www.googleapis.com/books/v1/volumes/fhabaMVQ9wkC",
+    "volumeInfo": {
+      "title": "Popular Science ",
+      "publishedDate": "1998-06",
+      "readingModes": {
+        "text": false,
+        "image": true
+      },
+      "pageCount": 112,
+      "printType": "MAGAZINE",
+      "maturityRating": "NOT_MATURE",
+      "allowAnonLogging": false,
+      "contentVersion": "preview-1.0.0",
+      "imageLinks": {
+        "smallThumbnail": "http://books.google.com/books/content?id=fhabaMVQ9wkC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+        "thumbnail": "http://books.google.com/books/content?id=fhabaMVQ9wkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en",
+      "previewLink": "http://books.google.com.pe/books?id=fhabaMVQ9wkC&printsec=frontcover&dq=science&hl=&cd=1&source=gbs_api",
+      "infoLink": "http://books.google.com.pe/books?id=fhabaMVQ9wkC&dq=science&hl=&source=gbs_api",
+      "canonicalVolumeLink": "https://books.google.com/books/about/Popular_Science.html?hl=&id=fhabaMVQ9wkC"
+    },
+    "saleInfo": {
+      "country": "PE",
+      "saleability": "NOT_FOR_SALE",
+      "isEbook": false
+    },
+    "accessInfo": {
+      "country": "PE",
+      "viewability": "ALL_PAGES",
+      "embeddable": true,
+      "publicDomain": false,
+      "textToSpeechPermission": "ALLOWED",
+      "epub": {
+        "isAvailable": false
+      },
+      "pdf": {
+        "isAvailable": false
+      },
+      "webReaderLink": "http://play.google.com/books/reader?id=fhabaMVQ9wkC&hl=&printsec=frontcover&source=gbs_api",
+      "accessViewStatus": "SAMPLE",
+      "quoteSharingAllowed": false
+    }
+  },
+  {
+    "kind": "books#volume",
+    "id": "HegDAAAAMBAJ",
+    "etag": "ZJoRhofHoLA",
+    "selfLink": "https://www.googleapis.com/books/v1/volumes/HegDAAAAMBAJ",
+    "volumeInfo": {
+      "title": "Competition Science Vision",
+      "publishedDate": "1999-06",
+      "description": "Competition Science Vision (monthly magazine) is published by Pratiyogita Darpan Group in India and is one of the best Science monthly magazines available for medical entrance examination students in India. Well-qualified professionals of Physics, Chemistry, Zoology and Botany make contributions to this magazine and craft it with focus on providing complete and to-the-point study material for aspiring candidates. The magazine covers General Knowledge, Science and Technology news, Interviews of toppers of examinations, study material of Physics, Chemistry, Zoology and Botany with model papers, reasoning test questions, facts, quiz contest, general awareness and mental ability test in every monthly issue.",
+      "readingModes": {
+        "text": false,
+        "image": true
+      },
+      "pageCount": 154,
+      "printType": "MAGAZINE",
+      "averageRating": 5,
+      "ratingsCount": 1,
+      "maturityRating": "NOT_MATURE",
+      "allowAnonLogging": false,
+      "contentVersion": "0.0.1.0.preview.1",
+      "imageLinks": {
+        "smallThumbnail": "http://books.google.com/books/content?id=HegDAAAAMBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+        "thumbnail": "http://books.google.com/books/content?id=HegDAAAAMBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en",
+      "previewLink": "http://books.google.com.pe/books?id=HegDAAAAMBAJ&printsec=frontcover&dq=science&hl=&cd=2&source=gbs_api",
+      "infoLink": "http://books.google.com.pe/books?id=HegDAAAAMBAJ&dq=science&hl=&source=gbs_api",
+      "canonicalVolumeLink": "https://books.google.com/books/about/Competition_Science_Vision.html?hl=&id=HegDAAAAMBAJ"
+    },
+    "saleInfo": {
+      "country": "PE",
+      "saleability": "NOT_FOR_SALE",
+      "isEbook": false
+    },
+    "accessInfo": {
+      "country": "PE",
+      "viewability": "ALL_PAGES",
+      "embeddable": true,
+      "publicDomain": false,
+      "textToSpeechPermission": "ALLOWED",
+      "epub": {
+        "isAvailable": false
+      },
+      "pdf": {
+        "isAvailable": false
+      },
+      "webReaderLink": "http://play.google.com/books/reader?id=HegDAAAAMBAJ&hl=&printsec=frontcover&source=gbs_api",
+      "accessViewStatus": "SAMPLE",
+      "quoteSharingAllowed": false
+    },
+    "searchInfo": {
+      "textSnippet": "Competition Science Vision (monthly magazine) is published by Pratiyogita Darpan Group in India and is one of the best Science monthly magazines available for medical entrance examination students in India."
+    }
+  },
+  {
+    "kind": "books#volume",
+    "id": "qR8DAAAAMBAJ",
+    "etag": "peKFcdli0mo",
+    "selfLink": "https://www.googleapis.com/books/v1/volumes/qR8DAAAAMBAJ",
+    "volumeInfo": {
+      "title": "Popular Science",
+      "publishedDate": "1872-05",
+      "description": "Popular Science gives our readers the information and tools to improve their technology and their world. The core belief that Popular Science and our readers share: The future is going to be better, and science and technology are the driving forces that will help make it better.",
+      "readingModes": {
+        "text": false,
+        "image": true
+      },
+      "pageCount": 134,
+      "printType": "MAGAZINE",
+      "averageRating": 5,
+      "ratingsCount": 1,
+      "maturityRating": "NOT_MATURE",
+      "allowAnonLogging": false,
+      "contentVersion": "0.0.1.0.preview.1",
+      "panelizationSummary": {
+        "containsEpubBubbles": false,
+        "containsImageBubbles": false
+      },
+      "imageLinks": {
+        "smallThumbnail": "http://books.google.com/books/content?id=qR8DAAAAMBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+        "thumbnail": "http://books.google.com/books/content?id=qR8DAAAAMBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en",
+      "previewLink": "http://books.google.com.pe/books?id=qR8DAAAAMBAJ&printsec=frontcover&dq=science&hl=&cd=3&source=gbs_api",
+      "infoLink": "http://books.google.com.pe/books?id=qR8DAAAAMBAJ&dq=science&hl=&source=gbs_api",
+      "canonicalVolumeLink": "https://books.google.com/books/about/Popular_Science.html?hl=&id=qR8DAAAAMBAJ"
+    },
+    "saleInfo": {
+      "country": "PE",
+      "saleability": "NOT_FOR_SALE",
+      "isEbook": false
+    },
+    "accessInfo": {
+      "country": "PE",
+      "viewability": "ALL_PAGES",
+      "embeddable": true,
+      "publicDomain": false,
+      "textToSpeechPermission": "ALLOWED",
+      "epub": {
+        "isAvailable": false
+      },
+      "pdf": {
+        "isAvailable": false
+      },
+      "webReaderLink": "http://play.google.com/books/reader?id=qR8DAAAAMBAJ&hl=&printsec=frontcover&source=gbs_api",
+      "accessViewStatus": "SAMPLE",
+      "quoteSharingAllowed": false
+    },
+    "searchInfo": {
+      "textSnippet": "Popular Science gives our readers the information and tools to improve their technology and their world."
+    }
+  },
+  {
+    "kind": "books#volume",
+    "id": "MC0DAAAAMBAJ",
+    "etag": "P8rRIJsaGSc",
+    "selfLink": "https://www.googleapis.com/books/v1/volumes/MC0DAAAAMBAJ",
+    "volumeInfo": {
+      "title": "Popular Science",
+      "publishedDate": "1950-05",
+      "description": "Popular Science gives our readers the information and tools to improve their technology and their world. The core belief that Popular Science and our readers share: The future is going to be better, and science and technology are the driving forces that will help make it better.",
+      "readingModes": {
+        "text": false,
+        "image": true
+      },
+      "pageCount": 290,
+      "printType": "MAGAZINE",
+      "averageRating": 5,
+      "ratingsCount": 1,
+      "maturityRating": "NOT_MATURE",
+      "allowAnonLogging": false,
+      "contentVersion": "0.0.1.0.preview.1",
+      "panelizationSummary": {
+        "containsEpubBubbles": false,
+        "containsImageBubbles": false
+      },
+      "imageLinks": {
+        "smallThumbnail": "http://books.google.com/books/content?id=MC0DAAAAMBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+        "thumbnail": "http://books.google.com/books/content?id=MC0DAAAAMBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en",
+      "previewLink": "http://books.google.com.pe/books?id=MC0DAAAAMBAJ&printsec=frontcover&dq=science&hl=&cd=4&source=gbs_api",
+      "infoLink": "http://books.google.com.pe/books?id=MC0DAAAAMBAJ&dq=science&hl=&source=gbs_api",
+      "canonicalVolumeLink": "https://books.google.com/books/about/Popular_Science.html?hl=&id=MC0DAAAAMBAJ"
+    },
+    "saleInfo": {
+      "country": "PE",
+      "saleability": "NOT_FOR_SALE",
+      "isEbook": false
+    },
+    "accessInfo": {
+      "country": "PE",
+      "viewability": "ALL_PAGES",
+      "embeddable": true,
+      "publicDomain": false,
+      "textToSpeechPermission": "ALLOWED",
+      "epub": {
+        "isAvailable": false
+      },
+      "pdf": {
+        "isAvailable": false
+      },
+      "webReaderLink": "http://play.google.com/books/reader?id=MC0DAAAAMBAJ&hl=&printsec=frontcover&source=gbs_api",
+      "accessViewStatus": "SAMPLE",
+      "quoteSharingAllowed": false
+    },
+    "searchInfo": {
+      "textSnippet": "Popular Science gives our readers the information and tools to improve their technology and their world."
+    }
+  },
+  {
+    "kind": "books#volume",
+    "id": "l3CxgWPR4j8C",
+    "etag": "EixzAxS148w",
+    "selfLink": "https://www.googleapis.com/books/v1/volumes/l3CxgWPR4j8C",
+    "volumeInfo": {
+      "title": "Popular Science",
+      "publishedDate": "1991-08",
+      "description": "Popular Science gives our readers the information and tools to improve their technology and their world. The core belief that Popular Science and our readers share: The future is going to be better, and science and technology are the driving forces that will help make it better.",
+      "readingModes": {
+        "text": false,
+        "image": true
+      },
+      "pageCount": 100,
+      "printType": "MAGAZINE",
+      "maturityRating": "NOT_MATURE",
+      "allowAnonLogging": false,
+      "contentVersion": "0.0.1.0.preview.1",
+      "panelizationSummary": {
+        "containsEpubBubbles": false,
+        "containsImageBubbles": false
+      },
+      "imageLinks": {
+        "smallThumbnail": "http://books.google.com/books/content?id=l3CxgWPR4j8C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+        "thumbnail": "http://books.google.com/books/content?id=l3CxgWPR4j8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      },
+      "language": "en",
+      "previewLink": "http://books.google.com.pe/books?id=l3CxgWPR4j8C&printsec=frontcover&dq=science&hl=&cd=5&source=gbs_api",
+      "infoLink": "http://books.google.com.pe/books?id=l3CxgWPR4j8C&dq=science&hl=&source=gbs_api",
+      "canonicalVolumeLink": "https://books.google.com/books/about/Popular_Science.html?hl=&id=l3CxgWPR4j8C"
+    },
+    "saleInfo": {
+      "country": "PE",
+      "saleability": "NOT_FOR_SALE",
+      "isEbook": false
+    },
+    "accessInfo": {
+      "country": "PE",
+      "viewability": "ALL_PAGES",
+      "embeddable": true,
+      "publicDomain": false,
+      "textToSpeechPermission": "ALLOWED",
+      "epub": {
+        "isAvailable": false
+      },
+      "pdf": {
+        "isAvailable": false
+      },
+      "webReaderLink": "http://play.google.com/books/reader?id=l3CxgWPR4j8C&hl=&printsec=frontcover&source=gbs_api",
+      "accessViewStatus": "SAMPLE",
+      "quoteSharingAllowed": false
+    },
+    "searchInfo": {
+      "textSnippet": "Popular Science gives our readers the information and tools to improve their technology and their world."
+    }
+  }
+]
