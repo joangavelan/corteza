@@ -1,13 +1,13 @@
-import SearchResult from '@components/BookSearchResult'
+import BookSearchResult from '@components/BookSearchResult'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 export default {
-  title: 'UI/SearchResult',
-  component: SearchResult
-} as ComponentMeta<typeof SearchResult>
+  title: 'UI/BookSearchResult',
+  component: BookSearchResult
+} as ComponentMeta<typeof BookSearchResult>
 
-const Template: ComponentStory<typeof SearchResult> = (args) => (
-  <SearchResult {...args} />
+const Template: ComponentStory<typeof BookSearchResult> = (args) => (
+  <BookSearchResult {...args} />
 )
 
 export const Default = Template.bind({})
