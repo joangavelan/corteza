@@ -20,7 +20,6 @@ const BookSearchResults = () => {
       setLoading(true)
       const books = await getGoogleBooks(query, signal)
       if (books) {
-        console.log(adaptBookSearchResults(books))
         setBooks(adaptBookSearchResults(books))
       } else {
         setErrorMessage(`No results found for "${query}"`)
