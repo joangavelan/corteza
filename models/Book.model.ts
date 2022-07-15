@@ -5,7 +5,6 @@ export interface Book {
   pageCount?: number
   imgUrl?: string
   rating?: number
-  currentPage?: number
   publishedYear?: string
   category?: string
 }
