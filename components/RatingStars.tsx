@@ -1,6 +1,6 @@
 import { ImStarFull, ImStarHalf, ImStarEmpty } from 'react-icons/im'
 
-const RatingStars = ({ rating = 0}: { rating: number }) => {
+const RatingStars = ({ rating = 0 }: { rating: number }) => {
   const base = Math.floor(rating)
   let decimal = rating - base
 
