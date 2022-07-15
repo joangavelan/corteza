@@ -22,6 +22,7 @@ const BookSearchResults = () => {
       if (books) {
         setBooks(adaptBookSearchResults(books))
       } else {
+        setBooks([])
         setErrorMessage(`No results found for "${query}"`)
       }
       setLoading(false)
@@ -49,7 +50,7 @@ const BookSearchResults = () => {
     )
   }
 
-  if (!books?.length) {
+  if (books.length === 0) {
     return (
       <div className={styles.container}>
         <div className={styles.noResults}>{errorMessage}</div>
