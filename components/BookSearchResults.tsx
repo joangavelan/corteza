@@ -60,11 +60,11 @@ const BookSearchResults = () => {
 
   return (
     <div className={styles.container}>
-      {books.map(({ id, title, imgUrl, author, rating }) => (
+      {books.map(({ id, title, imgURL, author, rating }) => (
         <BookSearchResult
           key={id}
           title={title}
-          imgUrl={imgUrl}
+          imgURL={imgURL}
           author={author}
           rating={rating}
         />

@@ -4,7 +4,7 @@ export const adaptBookSearchResults = (googleBooks: any[]): Book[] => {
   return googleBooks.map((googleBook) => ({
     id: googleBook.id,
     title: googleBook.volumeInfo.title,
-    imgUrl: googleBook.volumeInfo?.imageLinks?.thumbnail,
+    imgURL: googleBook.volumeInfo?.imageLinks?.thumbnail,
     author: googleBook.volumeInfo?.authors?.[0],
     rating: googleBook.volumeInfo?.averageRating,
     publishedYear: googleBook.volumeInfo?.publishedDate?.slice(0, 4),

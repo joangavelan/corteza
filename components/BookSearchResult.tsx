@@ -5,7 +5,7 @@ import RatingStars from './RatingStars'
 import { BookSearchResultProps } from '@models'
 
 const BookSearchResult = ({
-  imgUrl,
+  imgURL,
   title,
   rating,
   author
@@ -14,7 +14,7 @@ const BookSearchResult = ({
     <div className={styles.searchResult}>
       <div className={styles.imgContainer}>
         <Image
-          src={imgUrl ?? '/images/book-placeholder.svg'}
+          src={imgURL ?? '/images/book-placeholder.svg'}
           alt={title + 'book cover'}
           layout='fill'
           objectFit='cover'

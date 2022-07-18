@@ -3,7 +3,7 @@ export interface Book {
   title: string
   author?: string
   pageCount?: number
-  imgUrl?: string
+  imgURL?: string
   rating?: number
   publishedYear?: string
   category?: string
