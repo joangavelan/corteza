@@ -1,4 +1,4 @@
 export interface SelectedBookProps {
-  title: string,
-  author: string
+  title: string
+  author?: string
 }

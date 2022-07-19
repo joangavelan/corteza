@@ -1,7 +1,7 @@
 @import './variables';
 @import './mixins';
 
-.selectedBook {
+.container {
   @include search-bar-styles;
   position: relative;
   display: flex;
@@ -15,16 +15,16 @@
   overflow: hidden;
 }
 
-.bookTitle {
+.title {
   display: inline;
   font-weight: 600;
 }
 
-.bookAuthor {
+.author {
   display: inline;
 }
 
-.removeIcon {
+.icon {
   position: absolute;
   display: flex;
   align-items: center;

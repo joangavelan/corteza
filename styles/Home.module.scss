@@ -23,9 +23,10 @@
 
 .searchContainer {
   display: flex;
+  justify-content: space-between;
   margin: 3rem 0;
 
-  input {
-    margin-right: 1.5rem;
+  & > :first-child {
+    width: calc(100% - 19.5rem);
   }
 }

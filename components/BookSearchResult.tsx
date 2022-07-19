@@ -1,17 +1,21 @@
-import React from 'react'
 import styles from '@styles/BookSearchResult.module.scss'
 import Image from 'next/image'
 import RatingStars from './RatingStars'
-import { BookSearchResultProps } from '@models'
+import { Book } from '@models'
+import useStore from '@zustand/store'
 
-const BookSearchResult = ({
-  imgURL,
-  title,
-  rating,
-  author
-}: BookSearchResultProps) => {
+const BookSearchResult = ({ book }: { book: Book }) => {
+  const { imgURL, title, rating, author } = book
+  const setSelectedBook = useStore((set) => set.setSelectedBook)
+  const setSearchQuery = useStore((set) => set.setSearchQuery)
+
+  const handleClick = (book: Book) => {
+    setSelectedBook(book)
+    setSearchQuery('')
+  }
+
   return (
-    <div className={styles.searchResult}>
+    <div className={styles.searchResult} onClick={() => handleClick(book)}>
       <div className={styles.imgContainer}>
         <Image
           src={imgURL ?? '/images/book-placeholder.svg'}

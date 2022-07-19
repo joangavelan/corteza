@@ -8,9 +8,11 @@ import { AiFillCaretRight } from 'react-icons/ai'
 import BookSearchResults from '@components/BookSearchResults'
 import useStore from '@zustand/store'
 import NonSSRWrapper from '@components/NonSSRWrapper'
+import SelectedBook from '@components/SelectedBook'
 
 const Home: NextPage = () => {
   const searchQuery = useStore((state) => state.searchQuery)
+  const selectedBook = useStore((state) => state.selectedBook)
 
   return (
     <div className={styles.container}>
@@ -30,7 +32,14 @@ const Home: NextPage = () => {
           />
           {/* search */}
           <div className={styles.searchContainer}>
-            <SearchBar />
+            {selectedBook ? (
+              <SelectedBook
+                title={selectedBook.title}
+                author={selectedBook.author}
+              />
+            ) : (
+              <SearchBar />
+            )}
             <Button
               text='Start Tracking'
               type='button'
