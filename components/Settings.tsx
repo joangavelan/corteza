@@ -3,10 +3,19 @@ import styles from '@styles/Settings.module.scss'
 import fields from '@data/settingsFields.json'
 import Button from './Button'
 
-const Settings = () => {
+interface SettingsProps {
+  ids: string[]
+  title: string
+  description?: string
+}
+
+const Settings = ({ ids, title, description }: SettingsProps) => {
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Settings</h2>
+      <div className={styles.heading}>
+        <h3>{title}</h3>
+        {description && <p>{description}</p>}
+      </div>
       <form className={styles.form}>
         {fields.map(({ id, label, placeholder, type, required }) => (
           <div className={styles.field} key={id}>

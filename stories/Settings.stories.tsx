@@ -6,7 +6,9 @@ export default {
   component: Settings
 } as ComponentMeta<typeof Settings>
 
-const Template: ComponentStory<typeof Settings> = () => <Settings />
+const Template: ComponentStory<typeof Settings> = (args) => (
+  <Settings {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {}

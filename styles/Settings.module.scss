@@ -1,20 +1,25 @@
 @import './variables';
 
-.container {
-  background-color: $color-secondary-800;
-  max-width: 65rem;
-  padding: 3rem;
-}
+.heading {
+  text-align: center;
+  margin-bottom: 4rem;
 
-.title {
-  font-family: $font-family-primary;
-  font-size: 3.5rem;
-  color: $color-secondary-50;
-  padding-bottom: 4rem;
-  text-decoration: underline;
+  h3 {
+    color: $color-secondary-100;
+    font-size: 3.2rem;
+  }
+
+  p {
+    margin-top: 1.2rem;
+    font-size: 1.8rem;
+    color: $color-secondary-200;
+    line-height: 1.5;
+  }
 }
 
 .form {
+  width: 100%;
+  max-width: 100%;
   display: grid;
   grid-gap: 3rem;
 }
