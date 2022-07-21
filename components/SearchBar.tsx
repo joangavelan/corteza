@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react'
 import styles from '@styles/SearchBar.module.scss'
-import useStore from '@zustand/store'
+import useSearchQuery from '@zustand/useSearchQuery'
 
 const SearchBar = () => {
-  const searchQuery = useStore((state) => state.searchQuery)
-  const setSearchQuery = useStore((state) => state.setSearchQuery)
+  const searchQuery = useSearchQuery((state) => state.searchQuery)
+  const setSearchQuery = useSearchQuery((state) => state.setSearchQuery)
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {

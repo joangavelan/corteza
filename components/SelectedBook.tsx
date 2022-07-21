@@ -1,10 +1,10 @@
 import { SelectedBookProps } from '@models'
 import styles from '@styles/SelectedBook.module.scss'
 import { IoClose } from 'react-icons/io5'
-import useStore from '@zustand/store'
+import useSelectedBook from '@zustand/useSelectedBook'
 
 const SelectedBook = ({ title, author }: SelectedBookProps) => {
-  const setSelectedBook = useStore((set) => set.setSelectedBook)
+  const setSelectedBook = useSelectedBook((set) => set.setSelectedBook)
 
   const removeSelectedBook = () => {
     setSelectedBook(null)

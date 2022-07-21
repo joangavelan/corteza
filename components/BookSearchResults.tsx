@@ -4,11 +4,11 @@ import { getGoogleBooks } from '@services'
 import { adaptBookSearchResults } from '@adapters'
 import { Book } from '@models'
 import BookSearchResult from './BookSearchResult'
-import useStore from '@zustand/store'
 import BookSearchResultLoader from './loaders/BookSearchResultLoader'
+import useSearchQuery from '@zustand/useSearchQuery'
 
 const BookSearchResults = () => {
-  const searchQuery = useStore((state) => state.searchQuery)
+  const searchQuery = useSearchQuery((state) => state.searchQuery)
   const [loading, setLoading] = useState(true)
   const [books, setBooks] = useState<Book[]>([])
   const [errorMessage, setErrorMessage] = useState('')

@@ -7,16 +7,16 @@ import Head from 'next/head'
 import styles from '@styles/Home.module.scss'
 import { AiFillCaretRight } from 'react-icons/ai'
 import BookSearchResults from '@components/BookSearchResults'
-import useStore from '@zustand/store'
-import NonSSRWrapper from '@components/NonSSRWrapper'
+import useSelectedBook from '@zustand/useSelectedBook'
 import SelectedBook from '@components/SelectedBook'
 import { Book } from '@models'
 import Modal from '@components/Modal'
 import Settings from '@components/Settings'
+import useSearchQuery from '@zustand/useSearchQuery'
 
 const Home: NextPage = () => {
-  const searchQuery = useStore((state) => state.searchQuery)
-  const selectedBook = useStore((state) => state.selectedBook)
+  const searchQuery = useSearchQuery((state) => state.searchQuery)
+  const selectedBook = useSelectedBook((state) => state.selectedBook)
   const [emptyFields, setEmptyFields] = useState<string[]>([])
   const [modalIsOpen, setModalIsOpen] = useState(false)
 
@@ -44,35 +44,33 @@ const Home: NextPage = () => {
         <meta name='description' content='Book tracking app' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <NonSSRWrapper>
-        {/* content */}
-        <div className={styles.content}>
-          {/* heading */}
-          <Heading
-            variant='search'
-            title="Search For A Book You'd Like to Read & Track"
-          />
-          {/* search */}
-          <div className={styles.searchContainer}>
-            {selectedBook ? (
-              <SelectedBook
-                title={selectedBook.title}
-                author={selectedBook.author}
-              />
-            ) : (
-              <SearchBar />
-            )}
-            <Button
-              text='Start Tracking'
-              type='button'
-              Icon={AiFillCaretRight}
-              onClick={handleStartTracking}
+      {/* content */}
+      <div className={styles.content}>
+        {/* heading */}
+        <Heading
+          variant='search'
+          title="Search For A Book You'd Like to Read & Track"
+        />
+        {/* search */}
+        <div className={styles.searchContainer}>
+          {selectedBook ? (
+            <SelectedBook
+              title={selectedBook.title}
+              author={selectedBook.author}
             />
-          </div>
-          {/* search results */}
-          {!!searchQuery.trim() && <BookSearchResults />}
+          ) : (
+            <SearchBar />
+          )}
+          <Button
+            text='Start Tracking'
+            type='button'
+            Icon={AiFillCaretRight}
+            onClick={handleStartTracking}
+          />
         </div>
-      </NonSSRWrapper>
+        {/* search results */}
+        {!!searchQuery.trim() && <BookSearchResults />}
+      </div>
       {modalIsOpen && (
         <Modal setOpen={setModalIsOpen}>
           <Settings

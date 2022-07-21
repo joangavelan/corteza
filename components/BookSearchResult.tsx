@@ -2,12 +2,13 @@ import styles from '@styles/BookSearchResult.module.scss'
 import Image from 'next/image'
 import RatingStars from './RatingStars'
 import { Book } from '@models'
-import useStore from '@zustand/store'
+import useSelectedBook from '@zustand/useSelectedBook'
+import useSearchQuery from '@zustand/useSearchQuery'
 
 const BookSearchResult = ({ book }: { book: Book }) => {
   const { imgURL, title, rating, author } = book
-  const setSelectedBook = useStore((set) => set.setSelectedBook)
-  const setSearchQuery = useStore((set) => set.setSearchQuery)
+  const setSelectedBook = useSelectedBook((set) => set.setSelectedBook)
+  const setSearchQuery = useSearchQuery((set) => set.setSearchQuery)
 
   const handleClick = (book: Book) => {
     setSelectedBook(book)
