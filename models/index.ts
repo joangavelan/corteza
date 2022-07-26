@@ -4,3 +4,4 @@ export * from './Button.model';
 export * from './Entry.model';
 export * from './Heading.model';
 export * from './SelectedBook.model';
+export * from './Setting.model';
