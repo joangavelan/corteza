@@ -25,8 +25,23 @@
   display: flex;
   justify-content: space-between;
   margin: 3rem 0;
+  gap: 1.5rem;
 
   & > :first-child {
-    width: calc(100% - 19.5rem);
+    flex: 1;
+    min-width: 0;
+    min-height: 5rem;
+  }
+
+  & > :last-child {
+    min-width: max-content;
+  }
+
+  @media screen and (max-width: $breakpoint-phone) {
+    flex-direction: column;
+
+    & > :first-child {
+      width: 100%;
+    }
   }
 }
