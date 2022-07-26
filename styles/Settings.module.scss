@@ -50,7 +50,7 @@
     width: 100%;
     max-width: 26rem;
 
-    @media only screen and (max-width: $breakpoint-mobile) {
+    @media only screen and (max-width: $breakpoint-phone) {
       max-width: 22rem;
     }
 
