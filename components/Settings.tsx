@@ -32,7 +32,15 @@ const Settings = ({ ids, title, description }: SettingsProps) => {
             />
           </div>
         ))}
-        <Button type='submit' text='SAVE AND CONTINUE' />
+        <div className={styles.buttons}>
+          <Button type='button' text='SKIP FOR NOW' color='dark' size='small' />
+          <Button
+            type='submit'
+            text='SAVE AND CONTINUE'
+            color='light'
+            size='small'
+          />
+        </div>
       </form>
     </div>
   )

@@ -66,6 +66,8 @@ const Home: NextPage = () => {
             type='button'
             Icon={AiFillCaretRight}
             onClick={handleStartTracking}
+            color='light'
+            size='medium'
           />
         </div>
         {/* search results */}

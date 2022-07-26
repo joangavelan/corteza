@@ -11,7 +11,7 @@
 
   p {
     margin-top: 1.2rem;
-    font-size: 1.65rem;
+    font-size: 1.6rem;
     color: $color-secondary-200;
     line-height: 1.5;
   }
@@ -66,4 +66,11 @@
   &:last-of-type {
     margin-bottom: 1.2rem;
   }
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1.5rem;
 }
