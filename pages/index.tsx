@@ -18,7 +18,7 @@ const Home: NextPage = () => {
   const searchQuery = useSearchQuery((state) => state.searchQuery)
   const selectedBook = useSelectedBook((state) => state.selectedBook)
   const [emptyFields, setEmptyFields] = useState<string[]>([])
-  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const [openSettings, setOpenSettings] = useState(false)
 
   const handleStartTracking = () => {
     if (selectedBook) {
@@ -27,7 +27,7 @@ const Home: NextPage = () => {
       )
       if (emptyFields.length > 0) {
         setEmptyFields(emptyFields)
-        setModalIsOpen(true)
+        setOpenSettings(true)
       } else {
         console.log('start tracking')
       }
@@ -71,12 +71,12 @@ const Home: NextPage = () => {
         {/* search results */}
         {!!searchQuery.trim() && <BookSearchResults />}
       </div>
-      {modalIsOpen && (
-        <Modal setOpen={setModalIsOpen}>
+      {openSettings && (
+        <Modal setOpen={setOpenSettings}>
           <Settings
             ids={emptyFields}
             title='Before you continue!'
-            description='Please fill in the missing fields before you start tracking.'
+            description='It seems that we were not able to collect all the necessary data for this book. Please fill in the missing fields for better tracking. (You can edit them later)'
           />
         </Modal>
       )}
