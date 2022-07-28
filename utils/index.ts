@@ -1,2 +1,2 @@
 export * from './getWindowDimensions.util';
-export * from './isValidURL';
+export * from './isValidURL.util';
