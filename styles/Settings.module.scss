@@ -21,10 +21,11 @@
   width: 100%;
   max-width: 100%;
   display: grid;
-  grid-gap: 3rem;
+  grid-gap: 3.5rem;
 }
 
 .field {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -58,13 +59,13 @@
       color: $color-secondary-400;
     }
 
-    &:focus {
-      outline: 1px solid $color-primary-400;
+    &.valid {
+      outline: 1px solid $color-success-500;
     }
-  }
 
-  &:last-of-type {
-    margin-bottom: 1.2rem;
+    &.invalid {
+      outline: 1px solid $color-danger-500;
+    }
   }
 }
 
@@ -74,4 +75,14 @@
   gap: 2rem;
   align-items: center;
   margin-top: 1.5rem;
+}
+
+.errorMessage {
+  position: absolute;
+  right: 0;
+  bottom: -2.2rem;
+  color: $color-danger-500;
+  font-size: 1.3rem;
+  margin-top: 1.2rem;
+  text-align: center;
 }

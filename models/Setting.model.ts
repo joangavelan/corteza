@@ -3,7 +3,8 @@ import { Book } from '@models'
 export interface Setting {
   id: keyof Book
   label: string
-  type: 'text' | 'number' | 'url'
-  placeholder?: string
-  required?: boolean
+  type: 'text'
+  placeholder: string
+  required: boolean
+  validate: (value: string) => boolean | string
 }

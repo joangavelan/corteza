@@ -22,6 +22,7 @@ const Home: NextPage = () => {
 
   const handleStartTracking = () => {
     if (selectedBook) {
+      console.log(selectedBook)
       const emptyFields = Object.keys(selectedBook).filter(
         (key) => selectedBook[key as keyof Book] === undefined
       )
@@ -73,7 +74,7 @@ const Home: NextPage = () => {
         {/* search results */}
         {!!searchQuery.trim() && <BookSearchResults />}
       </div>
-      {openSettings && (
+      {true && (
         <Modal setOpen={setOpenSettings}>
           <Settings
             ids={emptyFields}
