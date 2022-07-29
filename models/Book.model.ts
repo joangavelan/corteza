@@ -2,7 +2,7 @@ export interface Book {
   id: number
   title: string
   author?: string
-  pageCount?: number
+  pageCount: number
   imgURL?: string
   rating?: number
   publishedYear?: string
