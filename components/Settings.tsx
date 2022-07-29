@@ -2,28 +2,51 @@ import styles from '@styles/Settings.module.scss'
 import settings from '@data/settings'
 import Button from './Button'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { Book } from '@models'
 import { ErrorMessage } from '@hookform/error-message'
+import { SettingsProps, FormData } from '@models'
+import { useRouter } from 'next/router'
+import useSelectedBook from '@zustand/useSelectedBook'
 
-interface SettingsProps {
-  ids: string[]
-  title: string
-  description?: string
-}
+const Settings = ({
+  ids,
+  title,
+  description,
+  setOpenSettings
+}: SettingsProps) => {
+  const selectedBook = useSelectedBook((state) => state.selectedBook)
 
-type FormData = Partial<Omit<Book, 'id'>>
-
-const Settings = ({ ids, title, description }: SettingsProps) => {
   const {
     register,
     handleSubmit,
     watch,
+    trigger,
     formState: { errors }
   } = useForm({
     mode: 'onChange'
   })
 
   const onSubmit: SubmitHandler<FormData> = (data) => console.log(data)
+
+  const { pathname, push } = useRouter()
+
+  const noSubmitFn = () => {
+    // if user is located on the home page
+    if (pathname === '/') {
+      // if the selected book already has values for the 2 required fields the user can skip the form and go to the tracking page
+      if (selectedBook?.title && selectedBook?.pageCount) {
+        setOpenSettings(false)
+        push(`tracking/${selectedBook?.title}`)
+      }
+      // otherwise the user can't skip the form and must fill out at least the 2 required fields, the trigger() function will show the error message for the required fields
+      else {
+        trigger()
+      }
+    }
+    // if user is located on the tracking page just close the modal
+    else {
+      setOpenSettings(false)
+    }
+  }
 
   return (
     <div className={styles.container}>
@@ -75,10 +98,16 @@ const Settings = ({ ids, title, description }: SettingsProps) => {
         )}
         {/* action buttons */}
         <div className={styles.buttons}>
-          <Button type='button' text='SKIP FOR NOW' color='dark' size='small' />
+          <Button
+            type='button'
+            text={pathname === '/' ? 'SKIP FOR NOW' : 'DISCARD CHANGES'}
+            color='dark'
+            size='small'
+            onClick={noSubmitFn}
+          />
           <Button
             type='submit'
-            text='SAVE AND CONTINUE'
+            text={pathname === '/' ? 'SAVE & CONTINUE' : 'SAVE'}
             color='light'
             size='small'
           />
