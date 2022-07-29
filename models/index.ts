@@ -2,6 +2,8 @@ export * from './Book.model';
 export * from './BookPreview.model';
 export * from './Button.model';
 export * from './Entry.model';
+export * from './FormData.model';
 export * from './Heading.model';
 export * from './SelectedBook.model';
 export * from './Setting.model';
+export * from './SettingsProps.model';
