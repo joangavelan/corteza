@@ -1,6 +1,3 @@
-export interface BookPreviewProps {
-  title: string
-  author: string
-  imgUrl: string
-  rating: number
-}
+import { Book } from "./Book.model"
+
+export type BookPreviewProps = Pick<Book, 'title' | 'author' | 'imgURL' | 'rating'>
