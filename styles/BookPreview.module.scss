@@ -2,7 +2,9 @@
 @import './mixins';
 
 .container {
-  max-width: 45rem;
+  max-width: 40rem;
+  margin: 0 auto;
+  color: $color-secondary-100;
 }
 
 .imgContainer {
@@ -12,6 +14,7 @@
   overflow: hidden;
   border-radius: 2px;
   margin: 0 auto 1rem;
+  box-shadow: $book-box-shadow;
 }
 
 .meta {
@@ -20,7 +23,7 @@
 
 .title {
   font-size: 1.8rem;
-  margin-bottom: 0.8rem;
+  margin: 1.5rem 0 0.8rem;
   line-height: 1.4;
 }
 

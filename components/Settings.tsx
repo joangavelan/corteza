@@ -6,6 +6,7 @@ import { ErrorMessage } from '@hookform/error-message'
 import { SettingsProps, FormData } from '@models'
 import { useRouter } from 'next/router'
 import useSelectedBook from '@zustand/useSelectedBook'
+import BookPreview from './BookPreview'
 
 const Settings = ({
   conditionalFields,
@@ -37,7 +38,7 @@ const Settings = ({
         setOpenSettings(false)
         push(`tracking/${selectedBook?.title}`)
       }
-      // otherwise the user can't skip the form and must fill out at least the 2 required fields, the trigger() function will show the error message for the required fields
+      // otherwise the user can't skip the form and must fill out and submit at least the 2 required fields, the trigger() function will display the error messages for the required fields
       else {
         trigger()
       }
@@ -55,6 +56,15 @@ const Settings = ({
         <h3>{title}</h3>
         {description && <p>{description}</p>}
       </div>
+      {/* book preview */}
+      {pathname === '/' && (
+        <BookPreview
+          title={selectedBook?.title!}
+          author={selectedBook?.author ?? watch('author')}
+          imgURL={selectedBook?.imgURL ?? watch('imgURL')}
+          rating={selectedBook?.rating ?? watch('rating')}
+        />
+      )}
       {/* form */}
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         {/* settings */}
