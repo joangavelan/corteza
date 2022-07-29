@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 import useSelectedBook from '@zustand/useSelectedBook'
 
 const Settings = ({
-  ids,
+  conditionalFields,
   title,
   description,
   setOpenSettings
@@ -58,44 +58,45 @@ const Settings = ({
       {/* form */}
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         {/* settings */}
-        {settings.map(
-          ({ id, label, placeholder, required, type, validate }) => (
-            <div className={styles.field} key={id}>
-              <label htmlFor={id}>
-                {label}
-                {required && <span>*</span>}
-              </label>
-              <input
-                id={id}
-                type={type}
-                placeholder={placeholder}
-                {...register(id, {
-                  required: {
-                    value: required,
-                    message: 'this field is required'
-                  },
-                  validate
-                })}
-                className={
-                  // if the input contains a valid value or has an error
-                  !!watch(id)?.trim() || errors[id]
-                    ? // add the corresponding class
-                      errors[id] // if the errors object contains the input id
-                      ? styles.invalid // add the invalid class
-                      : styles.valid // else add the valid class
-                    : '' // else add no class
-                }
-              />
-              <ErrorMessage
-                errors={errors}
-                name={id}
-                render={({ message }) => (
-                  <p className={styles.errorMessage}>{message}</p>
-                )}
-              />
-            </div>
-          )
-        )}
+        {(conditionalFields
+          ? settings.filter((setting) => conditionalFields.includes(setting.id))
+          : settings
+        ).map(({ id, label, placeholder, required, type, validate }) => (
+          <div className={styles.field} key={id}>
+            <label htmlFor={id}>
+              {label}
+              {required && <span>*</span>}
+            </label>
+            <input
+              id={id}
+              type={type}
+              placeholder={placeholder}
+              {...register(id, {
+                required: {
+                  value: required,
+                  message: 'this field is required'
+                },
+                validate
+              })}
+              className={
+                // if the input contains a valid value or has an error
+                !!watch(id)?.trim() || errors[id]
+                  ? // add the corresponding class
+                    errors[id] // if the errors object contains the input id
+                    ? styles.invalid // add the invalid class
+                    : styles.valid // else add the valid class
+                  : '' // else add no class
+              }
+            />
+            <ErrorMessage
+              errors={errors}
+              name={id}
+              render={({ message }) => (
+                <p className={styles.errorMessage}>{message}</p>
+              )}
+            />
+          </div>
+        ))}
         {/* action buttons */}
         <div className={styles.buttons}>
           <Button

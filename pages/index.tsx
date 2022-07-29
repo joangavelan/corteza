@@ -18,24 +18,24 @@ import { useRouter } from 'next/router'
 const Home: NextPage = () => {
   const searchQuery = useSearchQuery((state) => state.searchQuery)
   const selectedBook = useSelectedBook((state) => state.selectedBook)
-  const [emptyFields, setEmptyFields] = useState<string[]>([])
+  const [emptyFields, setEmptyFields] = useState<Array<keyof Book>>([])
   const [openSettings, setOpenSettings] = useState(false)
   const router = useRouter()
 
   const handleStartTracking = () => {
     if (selectedBook) {
-      console.log(selectedBook)
+      // get the keys that have empty values from the selected book
       const emptyFields = Object.keys(selectedBook).filter(
         (key) => selectedBook[key as keyof Book] === undefined
       )
+      // if there are empty fields, open the settings form to fill them out
       if (emptyFields.length > 0) {
-        setEmptyFields(emptyFields)
+        setEmptyFields(emptyFields as Array<keyof Book>)
         setOpenSettings(true)
+        // otherwise go to the tracking page
       } else {
         router.push(`tracking/${selectedBook.title}`)
       }
-    } else {
-      console.log('select a book first')
     }
   }
 
@@ -79,7 +79,7 @@ const Home: NextPage = () => {
       {openSettings && (
         <Modal setOpen={setOpenSettings}>
           <Settings
-            ids={emptyFields}
+            conditionalFields={emptyFields}
             title='Before you continue!'
             description='It seems that we were not able to collect all the necessary data for this book. Please fill in the missing fields for better tracking. (You can edit them later)'
             setOpenSettings={setOpenSettings}
