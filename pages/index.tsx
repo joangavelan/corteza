@@ -13,12 +13,14 @@ import { Book } from '@models'
 import Modal from '@components/Modal'
 import Settings from '@components/Settings'
 import useSearchQuery from '@zustand/useSearchQuery'
+import { useRouter } from 'next/router'
 
 const Home: NextPage = () => {
   const searchQuery = useSearchQuery((state) => state.searchQuery)
   const selectedBook = useSelectedBook((state) => state.selectedBook)
   const [emptyFields, setEmptyFields] = useState<string[]>([])
   const [openSettings, setOpenSettings] = useState(false)
+  const router = useRouter()
 
   const handleStartTracking = () => {
     if (selectedBook) {
@@ -30,7 +32,7 @@ const Home: NextPage = () => {
         setEmptyFields(emptyFields)
         setOpenSettings(true)
       } else {
-        console.log('start tracking')
+        router.push(`tracking/${selectedBook.title}`)
       }
     } else {
       console.log('select a book first')
@@ -74,12 +76,13 @@ const Home: NextPage = () => {
         {/* search results */}
         {!!searchQuery.trim() && <BookSearchResults />}
       </div>
-      {true && (
+      {openSettings && (
         <Modal setOpen={setOpenSettings}>
           <Settings
             ids={emptyFields}
             title='Before you continue!'
             description='It seems that we were not able to collect all the necessary data for this book. Please fill in the missing fields for better tracking. (You can edit them later)'
+            setOpenSettings={setOpenSettings}
           />
         </Modal>
       )}
