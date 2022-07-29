@@ -6,6 +6,6 @@ export interface ButtonProps {
   type: ButtonHTMLAttributes<HTMLButtonElement>['type']
   color: 'dark' | 'light'
   size: 'small' | 'medium' | 'large'
-  onClick?: () => void
+  onClick?: (...args: any) => void
   Icon?: IconType
 }
