@@ -7,7 +7,7 @@ const settings: Setting[] = [
     label: 'Title',
     type: 'text',
     placeholder: 'Blue Economy',
-    required: true,
+    required: 'title is required',
     validate: (value: string) =>
       (value.length >= 3 && value.length <= 120) ||
       'min 3 characters, max 120 characters'
@@ -29,6 +29,10 @@ const settings: Setting[] = [
     type: 'text',
     placeholder: '4.9',
     required: false,
+    pattern: {
+      value: /^\d+(\.\d{1})?$/,
+      message: 'numbers with one decimal point only'
+    },
     validate: (value: string) =>
       !!!value.trim() ||
       (Number(value) >= 1 && Number(value) <= 5) ||
@@ -40,6 +44,7 @@ const settings: Setting[] = [
     type: 'text',
     required: false,
     placeholder: 'https://example.com/image.png',
+
     validate: (value: string) =>
       !!!value.trim() || isValidURL(value) || 'please enter a valid URL'
   },
@@ -48,7 +53,11 @@ const settings: Setting[] = [
     label: 'Page Count',
     type: 'text',
     placeholder: '295',
-    required: true,
+    required: 'page count is required',
+    pattern: {
+      value: /^\d+$/,
+      message: 'whole numbers only'
+    },
     validate: (value: string) =>
       (Number(value) >= 4 && Number(value) <= 3031) ||
       'min 4 pages, max 3031 pages'
@@ -59,6 +68,10 @@ const settings: Setting[] = [
     type: 'text',
     placeholder: '2012',
     required: false,
+    pattern: {
+      value: /^\d+$/,
+      message: 'please enter a valid year'
+    },
     validate: (value: string) =>
       !!!value.trim() ||
       (Number(value) >= 1000 && Number(value) <= new Date().getFullYear()) ||

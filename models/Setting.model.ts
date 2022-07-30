@@ -5,6 +5,7 @@ export interface Setting {
   label: string
   type: 'text'
   placeholder: string
-  required: boolean
+  pattern?: { value: RegExp; message: string }
+  required: boolean | string
   validate: (value: string) => boolean | string
 }
