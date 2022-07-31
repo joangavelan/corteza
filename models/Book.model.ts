@@ -1,5 +1,5 @@
 export interface Book {
-  id: number
+  id: string
   title: string
   author?: string
   pageCount: number
