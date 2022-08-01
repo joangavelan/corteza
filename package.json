@@ -21,6 +21,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.33.1",
     "react-icons": "^4.4.0",
+    "slugify": "^1.6.5",
     "zustand": "^4.0.0-rc.1"
   },
   "devDependencies": {
