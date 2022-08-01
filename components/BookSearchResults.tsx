@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import styles from '@styles/BookSearchResults.module.scss'
 import { getGoogleBooks } from '@services'
 import { adaptBookSearchResults } from '@adapters'
-import { Book } from '@models'
+import { BookMeta } from '@models'
 import BookSearchResult from './BookSearchResult'
 import BookSearchResultLoader from './loaders/BookSearchResultLoader'
 import useSearchQuery from '@zustand/useSearchQuery'
@@ -10,7 +10,7 @@ import useSearchQuery from '@zustand/useSearchQuery'
 const BookSearchResults = () => {
   const searchQuery = useSearchQuery((state) => state.searchQuery)
   const [loading, setLoading] = useState(true)
-  const [books, setBooks] = useState<Book[]>([])
+  const [books, setBooks] = useState<BookMeta[]>([])
   const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {

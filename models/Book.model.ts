@@ -1,3 +1,5 @@
+import { Entry } from './Entry.model'
+
 export interface Book {
   id: string
   title: string
@@ -7,4 +9,6 @@ export interface Book {
   rating?: number
   publishedYear?: string
   category?: string
+  currentPage: number
+  entries: Entry[]
 }

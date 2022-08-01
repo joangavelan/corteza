@@ -1,3 +1,3 @@
-import { Book } from '@models'
+import { BookMeta } from '@models'
 
-export type FormData = Partial<Omit<Book, 'id'>>
+export type FormData = Partial<Omit<BookMeta, 'id'>>

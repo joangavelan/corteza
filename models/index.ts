@@ -1,4 +1,5 @@
 export * from './Book.model';
+export * from './BookMeta.model';
 export * from './BookPreview.model';
 export * from './Button.model';
 export * from './Entry.model';

@@ -9,7 +9,7 @@ import { AiFillCaretRight } from 'react-icons/ai'
 import BookSearchResults from '@components/BookSearchResults'
 import useSelectedBook from '@zustand/useSelectedBook'
 import SelectedBook from '@components/SelectedBook'
-import { Book } from '@models'
+import { BookMeta } from '@models'
 import Modal from '@components/Modal'
 import Settings from '@components/Settings'
 import useSearchQuery from '@zustand/useSearchQuery'
@@ -18,7 +18,7 @@ import { useRouter } from 'next/router'
 const Home: NextPage = () => {
   const searchQuery = useSearchQuery((state) => state.searchQuery)
   const selectedBook = useSelectedBook((state) => state.selectedBook)
-  const [emptyFields, setEmptyFields] = useState<Array<keyof Book>>([])
+  const [emptyFields, setEmptyFields] = useState<Array<keyof BookMeta>>([])
   const [openSettings, setOpenSettings] = useState(false)
   const router = useRouter()
 
@@ -26,11 +26,11 @@ const Home: NextPage = () => {
     if (selectedBook) {
       // get the keys that have empty values from the selected book
       const emptyFields = Object.keys(selectedBook).filter(
-        (key) => selectedBook[key as keyof Book] === undefined
+        (key) => selectedBook[key as keyof BookMeta] === undefined
       )
       // if there are empty fields, open the settings form to fill them out
       if (emptyFields.length > 0) {
-        setEmptyFields(emptyFields as Array<keyof Book>)
+        setEmptyFields(emptyFields as Array<keyof BookMeta>)
         setOpenSettings(true)
         // otherwise go to the tracking page
       } else {
