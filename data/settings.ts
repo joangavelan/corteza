@@ -8,6 +8,10 @@ const settings: Setting[] = [
     type: 'text',
     placeholder: 'Blue Economy',
     required: 'title is required',
+    pattern: {
+      value: /^([^ ]+ ?){1,}[^ ]{0,2}$/,
+      message: 'unnecessary spaces'
+    },
     validate: (value: string) =>
       (value.length >= 3 && value.length <= 120) ||
       'min 3 characters, max 120 characters'
@@ -18,6 +22,10 @@ const settings: Setting[] = [
     type: 'text',
     placeholder: 'Gunter Pauli',
     required: false,
+    pattern: {
+      value: /^([^ ]+ ?){1,}[^ ]{0,2}$/,
+      message: 'unnecessary spaces'
+    },
     validate: (value: string) =>
       !!!value.trim() ||
       (value.length >= 3 && value.length <= 50) ||
@@ -44,7 +52,6 @@ const settings: Setting[] = [
     type: 'text',
     required: false,
     placeholder: 'https://example.com/image.png',
-
     validate: (value: string) =>
       !!!value.trim() || isValidURL(value) || 'please enter a valid URL'
   },
@@ -83,6 +90,10 @@ const settings: Setting[] = [
     type: 'text',
     placeholder: 'Entrepreneurship',
     required: false,
+    pattern: {
+      value: /^([^ ]+ ?){1,}[^ ]{0,2}$/,
+      message: 'unnecessary spaces'
+    },
     validate: (value: string) =>
       !!!value.trim() ||
       (value.length >= 3 && value.length <= 20) ||
