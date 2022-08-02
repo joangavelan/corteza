@@ -50,8 +50,12 @@ const settings: Setting[] = [
     id: 'imgURL',
     label: 'Image URL',
     type: 'text',
-    required: false,
     placeholder: 'https://example.com/image.png',
+    required: false,
+    pattern: {
+      value: /^([^ ]+ ?){1,}[^ ]{0,2}$/,
+      message: 'unnecessary spaces'
+    },
     validate: (value: string) =>
       !!!value.trim() || isValidURL(value) || 'please enter a valid URL'
   },
