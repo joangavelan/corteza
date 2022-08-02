@@ -1,9 +1,9 @@
-import { BookMeta } from '@models'
+import { Book } from '@models'
 import create from 'zustand'
 
 interface State {
-  selectedBook: BookMeta | null
-  setSelectedBook: (selectedBook: BookMeta | null) => void
+  selectedBook: Book | null
+  setSelectedBook: (selectedBook: Book | null) => void
 }
 
 const useSelectedBook = create<State>()((set) => ({

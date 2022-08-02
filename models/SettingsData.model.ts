@@ -1,3 +1,5 @@
-import { BookMeta } from '@models'
+import { Book } from '@models'
 
-export type SettingsData = Partial<Omit<BookMeta, 'id'>>
+export type SettingsData = Partial<
+  Omit<Book, 'id' | 'slug' | 'currentPage' | 'entries'>
+>

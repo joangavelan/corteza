@@ -1,16 +1,16 @@
 import styles from '@styles/BookSearchResult.module.scss'
 import Image from 'next/image'
 import RatingStars from './RatingStars'
-import { BookMeta } from '@models'
+import { Book } from '@models'
 import useSelectedBook from '@zustand/useSelectedBook'
 import useSearchQuery from '@zustand/useSearchQuery'
 
-const BookSearchResult = ({ book }: { book: BookMeta }) => {
+const BookSearchResult = ({ book }: { book: Book }) => {
   const { imgURL, title, rating, author } = book
   const setSelectedBook = useSelectedBook((set) => set.setSelectedBook)
   const setSearchQuery = useSearchQuery((set) => set.setSearchQuery)
 
-  const handleClick = (book: BookMeta) => {
+  const handleClick = (book: Book) => {
     setSelectedBook(book)
     setSearchQuery('')
   }
