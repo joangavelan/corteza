@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Button from '@components/Button'
 import Heading from '@components/Heading'
 import SearchBar from '@components/SearchBar'
@@ -20,27 +20,46 @@ const Home: NextPage = () => {
   const searchQuery = useSearchQuery((state) => state.searchQuery)
   const selectedBook = useSelectedBook((state) => state.selectedBook)
   const saveBook = useBooks((state) => state.saveBook)
+  const books = useBooks((state) => state.books)
   const [emptyFields, setEmptyFields] = useState<Array<keyof Book>>([])
   const [openSettings, setOpenSettings] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const router = useRouter()
 
   const handleStartTracking = () => {
-    if (selectedBook) {
-      // check if there are any empty fields in the selected book
-      const emptyFields = Object.keys(selectedBook).filter(
-        (key) => selectedBook[key as keyof Book] === undefined
-      )
-      // if there are empty fields then open the pre-track settings to fill them out
-      if (!!emptyFields.length) {
-        setEmptyFields(emptyFields as Array<keyof Book>)
-        setOpenSettings(true)
-      } else {
-        // otherwise just save the book in the persistent (local storage) global state and go to the tracking page
-        saveBook(selectedBook)
-        router.push(`books/${selectedBook.slug}`)
-      }
+    if (!selectedBook) {
+      setErrorMessage('Please select a book to track')
+      return
+    }
+
+    const bookAlreadyExists = books.find((book) => book.id === selectedBook.id)
+    if (bookAlreadyExists) {
+      setErrorMessage('Book already exists')
+      return
+    }
+
+    // check if there are any empty fields in the selected book
+    const emptyFields = Object.keys(selectedBook).filter(
+      (key) => selectedBook[key as keyof Book] === undefined
+    )
+    // if there are empty fields then open the pre-track settings to fill them out
+    if (!!emptyFields.length) {
+      setEmptyFields(emptyFields as Array<keyof Book>)
+      setOpenSettings(true)
+    } else {
+      // otherwise just save the book in the persistent (local storage) global state and go to the tracking page
+      saveBook(selectedBook)
+      router.push(`books/${selectedBook.slug}`)
     }
   }
+
+  useEffect(() => {
+    if (!!errorMessage) {
+      setTimeout(() => {
+        setErrorMessage('')
+      }, 3000)
+    }
+  }, [errorMessage])
 
   return (
     <div className={styles.container}>
@@ -89,6 +108,8 @@ const Home: NextPage = () => {
           />
         </Modal>
       )}
+      {/* error message */}
+      {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
     </div>
   )
 }

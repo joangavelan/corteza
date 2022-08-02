@@ -45,3 +45,16 @@
     }
   }
 }
+
+.errorMessage {
+  position: absolute;
+  bottom: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: $color-secondary-100;
+  background-color: $color-danger-500;
+  border-radius: 4px;
+  padding: 7px 1rem;
+}
