@@ -3,10 +3,12 @@ import settings from '@data/settings'
 import Button from './Button'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
-import { SettingsProps, FormData } from '@models'
+import { SettingsProps, Book, SettingsData } from '@models'
 import { useRouter } from 'next/router'
 import useSelectedBook from '@zustand/useSelectedBook'
 import BookPreview from './BookPreview'
+import { assertValues } from '@utils'
+import useBooks from '@zustand/useBooks'
 
 const Settings = ({
   conditionalFields,
@@ -15,6 +17,7 @@ const Settings = ({
   setOpenSettings
 }: SettingsProps) => {
   const selectedBook = useSelectedBook((state) => state.selectedBook)
+  const saveBook = useBooks((state) => state.saveBook)
 
   const {
     register,
@@ -26,28 +29,45 @@ const Settings = ({
     mode: 'onChange'
   })
 
-  const onSubmit: SubmitHandler<FormData> = (data) => console.log(data)
+  const router = useRouter()
 
-  const { pathname, push } = useRouter()
-
-  const noSubmitFn = () => {
-    // if user is located on the home page
-    if (pathname === '/') {
-      // if the selected book already has values for the 2 required fields the user can skip the form and go to the tracking page
-      if (selectedBook?.title && selectedBook?.pageCount) {
-        setOpenSettings(false)
-        push(`tracking/${selectedBook?.title}`)
-      }
-      // otherwise the user can't skip the form and must fill out and submit at least the 2 required fields, the trigger() function will display the error messages for the required fields
-      else {
-        trigger()
-      }
+  // pre-track settings
+  const saveAndContinue: SubmitHandler<SettingsData> = (settingsData) => {
+    // complete the book data for the tracking page
+    const book: Book = {
+      ...selectedBook,
+      ...assertValues(settingsData)
     }
-    // if user is located on the tracking page just close the modal
-    else {
+    // save the book in the persistent (local storage) global state
+    saveBook(book)
+    // close the settings modal
+    setOpenSettings(false)
+    // go to the tracking page
+    router.push(`books/${book.slug}`)
+  }
+  const skipForNow = () => {
+    // the book must contain the page count value to be able to skip
+    if (selectedBook?.pageCount) {
+      saveBook(selectedBook)
       setOpenSettings(false)
+      router.push(`books/${selectedBook.slug}`)
+    }
+    // trigger errors on the required field if user tries to skip
+    else {
+      trigger()
     }
   }
+
+  // book tracking settings
+  const saveChanges: SubmitHandler<SettingsData> = (data) => {}
+  const discardChanges = () => {}
+
+  const onSubmit = router.pathname === '/' ? saveAndContinue : saveChanges
+  const nonSubmit = router.pathname === '/' ? skipForNow : discardChanges
+
+  const validAuthor = !errors['author'] ? watch('author') : undefined
+  const validImgURL = !errors['imgURL'] ? watch('imgURL') : undefined
+  const validRating = !errors['rating'] ? watch('rating') : undefined
 
   return (
     <div className={styles.container}>
@@ -57,12 +77,12 @@ const Settings = ({
         {description && <p>{description}</p>}
       </div>
       {/* book preview */}
-      {pathname === '/' && (
+      {router.pathname === '/' && (
         <BookPreview
           title={selectedBook?.title!}
-          author={selectedBook?.author ?? watch('author')}
-          imgURL={selectedBook?.imgURL ?? watch('imgURL')}
-          rating={selectedBook?.rating ?? watch('rating')}
+          author={selectedBook?.author ?? validAuthor}
+          imgURL={selectedBook?.imgURL ?? validImgURL}
+          rating={selectedBook?.rating ?? validRating}
         />
       )}
       {/* form */}
@@ -71,54 +91,54 @@ const Settings = ({
         {(conditionalFields
           ? settings.filter((setting) => conditionalFields.includes(setting.id))
           : settings
-        ).map(({ id, label, placeholder, required, type, validate }) => (
-          <div className={styles.field} key={id}>
-            <label htmlFor={id}>
-              {label}
-              {required && <span>*</span>}
-            </label>
-            <input
-              id={id}
-              type={type}
-              placeholder={placeholder}
-              {...register(id, {
-                required: {
-                  value: required,
-                  message: 'this field is required'
-                },
-                validate
-              })}
-              className={
-                // if the input contains a valid value or has an error
-                !!watch(id)?.trim() || errors[id]
-                  ? // add the corresponding class
-                    errors[id] // if the errors object contains the input id
-                    ? styles.invalid // add the invalid class
-                    : styles.valid // else add the valid class
-                  : '' // else add no class
-              }
-            />
-            <ErrorMessage
-              errors={errors}
-              name={id}
-              render={({ message }) => (
-                <p className={styles.errorMessage}>{message}</p>
-              )}
-            />
-          </div>
-        ))}
+        ).map(
+          ({ id, label, placeholder, required, pattern, type, validate }) => (
+            <div className={styles.field} key={id}>
+              <label htmlFor={id}>
+                {label}
+                {required && <span>*</span>}
+              </label>
+              <input
+                id={id}
+                type={type}
+                placeholder={placeholder}
+                {...register(id, {
+                  required,
+                  pattern,
+                  validate
+                })}
+                className={
+                  // if the input contains a valid value or has an error
+                  !!watch(id) || errors[id]
+                    ? // add the corresponding class
+                      errors[id] // if the errors object contains the input id
+                      ? styles.invalid // add the invalid class
+                      : styles.valid // else add the valid class
+                    : '' // else add no class
+                }
+              />
+              <ErrorMessage
+                errors={errors}
+                name={id}
+                render={({ message }) => (
+                  <p className={styles.errorMessage}>{message}</p>
+                )}
+              />
+            </div>
+          )
+        )}
         {/* action buttons */}
         <div className={styles.buttons}>
           <Button
             type='button'
-            text={pathname === '/' ? 'SKIP FOR NOW' : 'DISCARD CHANGES'}
+            text={router.pathname === '/' ? 'SKIP FOR NOW' : 'DISCARD CHANGES'}
             color='dark'
             size='small'
-            onClick={noSubmitFn}
+            onClick={nonSubmit}
           />
           <Button
             type='submit'
-            text={pathname === '/' ? 'SAVE & CONTINUE' : 'SAVE'}
+            text={router.pathname === '/' ? 'SAVE & CONTINUE' : 'SAVE CHANGES'}
             color='light'
             size='small'
           />

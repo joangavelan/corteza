@@ -9,32 +9,35 @@ import { AiFillCaretRight } from 'react-icons/ai'
 import BookSearchResults from '@components/BookSearchResults'
 import useSelectedBook from '@zustand/useSelectedBook'
 import SelectedBook from '@components/SelectedBook'
-import { BookMeta } from '@models'
+import { Book } from '@models'
 import Modal from '@components/Modal'
 import Settings from '@components/Settings'
 import useSearchQuery from '@zustand/useSearchQuery'
 import { useRouter } from 'next/router'
+import useBooks from '@zustand/useBooks'
 
 const Home: NextPage = () => {
   const searchQuery = useSearchQuery((state) => state.searchQuery)
   const selectedBook = useSelectedBook((state) => state.selectedBook)
-  const [emptyFields, setEmptyFields] = useState<Array<keyof BookMeta>>([])
+  const saveBook = useBooks((state) => state.saveBook)
+  const [emptyFields, setEmptyFields] = useState<Array<keyof Book>>([])
   const [openSettings, setOpenSettings] = useState(false)
   const router = useRouter()
 
   const handleStartTracking = () => {
     if (selectedBook) {
-      // get the keys that have empty values from the selected book
+      // check if there are any empty fields in the selected book
       const emptyFields = Object.keys(selectedBook).filter(
-        (key) => selectedBook[key as keyof BookMeta] === undefined
+        (key) => selectedBook[key as keyof Book] === undefined
       )
-      // if there are empty fields, open the settings form to fill them out
-      if (emptyFields.length > 0) {
-        setEmptyFields(emptyFields as Array<keyof BookMeta>)
+      // if there are empty fields then open the pre-track settings to fill them out
+      if (!!emptyFields.length) {
+        setEmptyFields(emptyFields as Array<keyof Book>)
         setOpenSettings(true)
-        // otherwise go to the tracking page
       } else {
-        router.push(`tracking/${selectedBook.title}`)
+        // otherwise just save the book in the persistent (local storage) global state and go to the tracking page
+        saveBook(selectedBook)
+        router.push(`books/${selectedBook.slug}`)
       }
     }
   }
