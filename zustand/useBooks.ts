@@ -4,7 +4,7 @@ import { persist } from 'zustand/middleware'
 
 interface State {
   books: Book[]
-  addBook: (book: Book) => void
+  saveBook: (book: Book) => void
   deleteBook: (id: string) => void
   updateBook: (id: string, data: SettingsData) => void
 }
@@ -13,7 +13,7 @@ const useBooks = create<State>()(
   persist(
     (set) => ({
       books: [],
-      addBook: (book) =>
+      saveBook: (book) =>
         set((state) => ({
           books: [...state.books, book]
         })),
