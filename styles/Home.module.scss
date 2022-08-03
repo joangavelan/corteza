@@ -1,4 +1,5 @@
 @import './variables';
+@import './mixins';
 
 .container {
   position: relative;
@@ -70,6 +71,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 2rem;
+
+    .bookTitle {
+      @include ellipsis;
+    }
 
     .currentPage {
       font-size: 1.65rem;

@@ -109,7 +109,7 @@ const Home: NextPage = () => {
               <li key={book.id}>
                 <Link href={`books/${book.slug}`}>
                   <a className={styles.book}>
-                    <h4>{book.title}</h4>
+                    <h4 className={styles.bookTitle}>{book.title}</h4>
                     <div>
                       <span className={styles.currentPage}>
                         {book.currentPage}
