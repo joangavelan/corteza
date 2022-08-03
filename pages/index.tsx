@@ -81,13 +81,16 @@ const Home: NextPage = () => {
         {/* search */}
         <div className={styles.searchContainer}>
           {selectedBook ? (
+            // selected book component
             <SelectedBook
               title={selectedBook.title}
               author={selectedBook.author}
             />
           ) : (
+            // search input bar
             <SearchBar />
           )}
+          {/* start tracking button */}
           <Button
             text='Start Tracking'
             type='button'
@@ -96,6 +99,8 @@ const Home: NextPage = () => {
             color='light'
             size='medium'
           />
+          {/* search results */}
+          {!!searchQuery.trim() && <BookSearchResults />}
         </div>
         {/* continue reading */}
         <NonSSRWrapper>
@@ -118,8 +123,6 @@ const Home: NextPage = () => {
             ))}
           </ul>
         </NonSSRWrapper>
-        {/* search results */}
-        {!!searchQuery.trim() && <BookSearchResults />}
       </div>
       {openSettings && (
         <Modal setOpen={setOpenSettings}>
