@@ -21,6 +21,7 @@ import NonSSRWrapper from '@components/NonSSRWrapper'
 const Home: NextPage = () => {
   const searchQuery = useSearchQuery((state) => state.searchQuery)
   const selectedBook = useSelectedBook((state) => state.selectedBook)
+  const setSelectedBook = useSelectedBook((state) => state.setSelectedBook)
   const saveBook = useBooks((state) => state.saveBook)
   const books = useBooks((state) => state.books)
   const [emptyFields, setEmptyFields] = useState<Array<keyof Book>>([])
@@ -62,6 +63,10 @@ const Home: NextPage = () => {
       }, 3000)
     }
   }, [errorMessage])
+
+  useEffect(() => {
+    setSelectedBook(null)
+  }, [setSelectedBook])
 
   return (
     <div className={styles.container}>
