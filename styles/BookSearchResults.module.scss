@@ -1,6 +1,13 @@
 @import './variables';
 
 .container {
+  position: absolute;
+  top: 8rem;
+
+  @media only screen and (max-width: $breakpoint-phone) {
+    top: 14.5rem;
+  }
+
   width: 100%;
   font-size: 3rem;
   background-color: white;
