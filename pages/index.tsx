@@ -15,6 +15,8 @@ import Settings from '@components/Settings'
 import useSearchQuery from '@zustand/useSearchQuery'
 import { useRouter } from 'next/router'
 import useBooks from '@zustand/useBooks'
+import Link from 'next/link'
+import NonSSRWrapper from '@components/NonSSRWrapper'
 
 const Home: NextPage = () => {
   const searchQuery = useSearchQuery((state) => state.searchQuery)
@@ -95,6 +97,27 @@ const Home: NextPage = () => {
             size='medium'
           />
         </div>
+        {/* continue reading */}
+        <NonSSRWrapper>
+          <ul className={styles.booksTracking}>
+            {books.map((book) => (
+              <li key={book.id}>
+                <Link href={`books/${book.slug}`}>
+                  <a className={styles.book}>
+                    <h4>{book.title}</h4>
+                    <div>
+                      <span className={styles.currentPage}>
+                        {book.currentPage}
+                      </span>
+                      /
+                      <span className={styles.pageCount}>{book.pageCount}</span>
+                    </div>
+                  </a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </NonSSRWrapper>
         {/* search results */}
         {!!searchQuery.trim() && <BookSearchResults />}
       </div>

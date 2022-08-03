@@ -46,6 +46,55 @@
   }
 }
 
+.booksTracking {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: $color-secondary-200;
+  font-size: 1.6rem;
+  max-height: 40rem;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  padding-inline-end: 2rem;
+
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 4px;
+    background-color: $color-primary-100;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-primary-500;
+    border-radius: 4px;
+  }
+
+  .book {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .currentPage {
+      font-size: 1.65rem;
+      font-weight: bold;
+      margin-right: 3px;
+    }
+
+    .pageCount {
+      font-size: 1.3rem;
+      margin-left: 3px;
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      h4 {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
 .errorMessage {
   width: max-content;
   position: absolute;
