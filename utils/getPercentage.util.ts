@@ -1,1 +1,2 @@
-export const getPercentage = (num: number, total: number) => (num / total) * 100
+export const getPercentage = (num: number, total: number) =>
+  Math.floor((num / total) * 100)
