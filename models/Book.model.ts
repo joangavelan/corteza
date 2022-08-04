@@ -4,12 +4,12 @@ export interface Book {
   id: string
   title: string
   slug: string
-  author?: string
+  author: string
   pageCount: number
-  imgURL?: string
-  rating?: number
-  publishedYear?: string
-  category?: string
+  imgURL: string
+  rating: number
+  publishedYear: string
+  category: string
   currentPage: number
   entries: Entry[]
 }
