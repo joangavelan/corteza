@@ -7,7 +7,7 @@ $color-primary-900: #78350f;
 $color-primary-800: #92400e;
 $color-primary-700: #b45309;
 $color-primary-600: #d97706;
-$color-primary-500: #f59e0b; 
+$color-primary-500: #f59e0b;
 $color-primary-400: #fbbf24;
 $color-primary-300: #fcd34d;
 $color-primary-200: #fde68a;
@@ -45,7 +45,7 @@ $color-success-400: #34d399;
 $color-success-300: #6ee7b7;
 $color-success-200: #a7f3d0;
 $color-success-100: #d1fae5;
-$color-success-50: #ecfdf5; 
+$color-success-50: #ecfdf5;
 // *** grays ***
 $color-gray-900: #111827;
 $color-gray-800: #1f2937;
@@ -65,4 +65,4 @@ $breakpoint-phone: 38em;
 $border: 1.5px solid;
 
 // box-shadows
-$book-box-shadow: 0 1rem 1.5rem rgba($color-secondary-900, .5);
+$box-shadow: 0 1rem 1.5rem rgba($color-secondary-900, 0.5);

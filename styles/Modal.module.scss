@@ -19,10 +19,9 @@
   max-width: 65rem;
   background-color: $color-secondary-800;
   padding: 3rem;
-  box-shadow: 0 1rem 1rem 1rem rgba($color-gray-900, 0.5);
+  box-shadow: $box-shadow;
   margin: 2rem;
 }
-
 
 .icon {
   font-size: 1.7rem;
