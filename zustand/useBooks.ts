@@ -7,6 +7,8 @@ interface State {
   saveBook: (book: Book) => void
   deleteBook: (id: string) => void
   updateBook: (id: string, data: SettingsData) => void
+  addReadPages: (id: string, pages: number) => void
+  removeReadPages: (id: string, pages: number) => void
 }
 
 const useBooks = create<State>()(
@@ -26,6 +28,24 @@ const useBooks = create<State>()(
           books: state.books.map((book) => {
             if (book.id === id) {
               return { ...book, ...data }
+            }
+            return book
+          })
+        })),
+      addReadPages: (id, pages) =>
+        set((state) => ({
+          books: state.books.map((book) => {
+            if (book.id === id) {
+              return { ...book, currentPage: book.currentPage + pages }
+            }
+            return book
+          })
+        })),
+      removeReadPages: (id, pages) =>
+        set((state) => ({
+          books: state.books.map((book) => {
+            if (book.id === id) {
+              return { ...book, currentPage: book.currentPage - pages }
             }
             return book
           })
