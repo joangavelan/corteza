@@ -1,6 +1,11 @@
 import { ImStarFull, ImStarHalf, ImStarEmpty } from 'react-icons/im'
+import styles from '@styles/RatingStars.module.scss'
 
-const RatingStars = ({ rating = 0 }: { rating: number }) => {
+interface RatingStarsProps {
+  rating: number
+}
+
+const RatingStars = ({ rating = 0 }: RatingStarsProps) => {
   const base = Math.floor(rating)
   let decimal = rating - base
 
@@ -16,7 +21,7 @@ const RatingStars = ({ rating = 0 }: { rating: number }) => {
   })
 
   return (
-    <>
+    <div className={styles.container}>
       {stars.map((e, i) => {
         switch (e) {
           case 'full':
@@ -27,7 +32,7 @@ const RatingStars = ({ rating = 0 }: { rating: number }) => {
             return <ImStarEmpty key={i} />
         }
       })}
-    </>
+    </div>
   )
 }
 
