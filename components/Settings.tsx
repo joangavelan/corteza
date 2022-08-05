@@ -108,10 +108,6 @@ const Settings = ({
   const onSubmit = router.pathname === '/' ? saveAndContinue : saveChanges
   const nonSubmit = router.pathname === '/' ? skipForNow : discardChanges
 
-  const validAuthor = !errors['author'] ? watch('author') : undefined
-  const validImgURL = !errors['imgURL'] ? watch('imgURL') : undefined
-  const validRating = !errors['rating'] ? watch('rating') : undefined
-
   return (
     <div className={styles.container}>
       {/* heading */}
@@ -122,10 +118,10 @@ const Settings = ({
       {/* book preview */}
       {router.pathname === '/' && (
         <BookPreview
-          title={selectedBook?.title!}
-          author={selectedBook?.author ?? validAuthor}
-          imgURL={selectedBook?.imgURL ?? validImgURL}
-          rating={selectedBook?.rating ?? validRating}
+          title={selectedBook.title}
+          author={selectedBook.author ?? (!errors['author'] && watch('author'))}
+          imgURL={selectedBook.imgURL ?? (!errors['imgURL'] && watch('imgURL'))}
+          rating={selectedBook.rating ?? (!errors['rating'] && watch('rating'))}
         />
       )}
       {/* form */}

@@ -22,7 +22,7 @@ const BookPreview = ({ title, author, imgURL, rating }: BookPreviewProps) => {
         <h3 className={styles.title}>{title}</h3>
         <div className={styles.wrapper}>
           <span className={styles.rating}>
-            <RatingStars rating={rating ?? 0} />
+            <RatingStars rating={rating || 0} />
           </span>
           {author && <p className={styles.author}>by {author}</p>}
         </div>

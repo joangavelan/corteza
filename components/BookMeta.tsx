@@ -24,7 +24,7 @@ const BookMeta = ({
       <div className={styles.dataOfInterest}>
         <div className={styles.item}>
           <BiCategory />
-          <span>{category ?? '-'}</span>
+          <span>{category || '-'}</span>
         </div>
         <div className={styles.item}>
           <BsBook />
@@ -32,7 +32,7 @@ const BookMeta = ({
         </div>
         <div className={styles.item}>
           <FiCalendar />
-          <span>{publishedYear ?? '-'}</span>
+          <span>{publishedYear || '-'}</span>
         </div>
       </div>
     </div>

@@ -45,8 +45,8 @@ const CircularProgress = ({
         <div className={styles.bookProgress}>
           <div className={styles.imageContainer}>
             <Image
-              loader={() => imgURL ?? '/images/book-placeholder.svg'}
-              src={imgURL ?? '/images/book-placeholder.svg'}
+              loader={() => imgURL || '/images/book-placeholder.svg'}
+              src={imgURL || '/images/book-placeholder.svg'}
               alt={title + 'book cover'}
               layout='fill'
               objectFit='cover'
