@@ -1,4 +1,4 @@
-import { Book, SettingsData } from '@models'
+import { Book } from '@models'
 import create from 'zustand'
 import { persist } from 'zustand/middleware'
 
@@ -6,7 +6,7 @@ interface State {
   books: Book[]
   saveBook: (book: Book) => void
   deleteBook: (id: string) => void
-  updateBook: (id: string, data: SettingsData) => void
+  updateBook: (id: string, data: Partial<Book>) => void
   addReadPages: (id: string, pages: number) => void
   removeReadPages: (id: string, pages: number) => void
 }
