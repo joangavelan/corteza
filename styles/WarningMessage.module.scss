@@ -1,0 +1,16 @@
+@import './variables';
+
+.container {
+  width: max-content;
+  position: absolute;
+  top: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: $color-secondary-50;
+  background-color: $color-danger-500;
+  border-radius: 4px;
+  padding: 7px 1rem;
+  z-index: 9999;
+}
