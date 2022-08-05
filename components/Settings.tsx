@@ -5,19 +5,31 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
 import { SettingsProps, Book, SettingsData } from '@models'
 import { useRouter } from 'next/router'
-import useSelectedBook from '@zustand/useSelectedBook'
 import BookPreview from './BookPreview'
 import { assertValues } from '@utils'
 import useBooks from '@zustand/useBooks'
+import slugify from 'slugify'
+import useWarningMessage from '@zustand/useWarningMessage'
 
 const Settings = ({
   conditionalFields,
   title,
   description,
-  setOpenSettings
+  setOpenSettings,
+  selectedBook
 }: SettingsProps) => {
-  const selectedBook = useSelectedBook((state) => state.selectedBook)
+  const books = useBooks((state) => state.books)
   const saveBook = useBooks((state) => state.saveBook)
+  const updateBook = useBooks((state) => state.updateBook)
+  const setWarningMessage = useWarningMessage((state) => state.setMessage)
+  const router = useRouter()
+
+  const nonEditableFieldsKeys = ['id', 'slug', 'currentPage', 'entries']
+  const editableFields = Object.fromEntries(
+    Object.entries(selectedBook)
+      .filter(([key]) => !nonEditableFieldsKeys.includes(key))
+      .map(([key, value]) => [key, value.toString()])
+  )
 
   const {
     register,
@@ -26,10 +38,9 @@ const Settings = ({
     trigger,
     formState: { errors }
   } = useForm({
-    mode: 'onChange'
+    mode: 'onChange',
+    defaultValues: editableFields
   })
-
-  const router = useRouter()
 
   // pre-track settings
   const saveAndContinue: SubmitHandler<SettingsData> = (settingsData) => {
@@ -59,8 +70,37 @@ const Settings = ({
   }
 
   // book tracking settings
-  const saveChanges: SubmitHandler<SettingsData> = (data) => {}
-  const discardChanges = () => {}
+  const saveChanges: SubmitHandler<SettingsData> = (data) => {
+    // if the user tries to change the pageCount for a lower number than the current page he's currently reading at, warn the user and cancel form submission
+    if (data.pageCount! < selectedBook.currentPage) {
+      setWarningMessage('Page count cannot be less than current page')
+      return
+      // if the user submits an updated book title, proceed with further validation
+    } else if (data.title !== selectedBook.title) {
+      // if there is already another book with the same title, warn the user and cancel the form submission
+      const bookWithSameTitle = books.find((book) => book.title === data.title)
+      if (bookWithSameTitle) {
+        setWarningMessage('A book with the same title already exists')
+        return
+        // otherwise just create a new object with the submitted data plus a new slug based on the new title, update the book and redirect the user to a new URL with the updated slug
+      } else {
+        const updatedBookFields = {
+          ...assertValues(data),
+          slug: slugify(data.title!, { lower: true })
+        }
+        updateBook(selectedBook.id, updatedBookFields)
+        setOpenSettings(false)
+        router.push(`${updatedBookFields.slug}`)
+      }
+      // else simply update the book if none of the above precautionary checks were triggered
+    } else {
+      updateBook(selectedBook.id, { ...assertValues(data) })
+      setOpenSettings(false)
+    }
+  }
+  const discardChanges = () => {
+    setOpenSettings(false)
+  }
 
   const onSubmit = router.pathname === '/' ? saveAndContinue : saveChanges
   const nonSubmit = router.pathname === '/' ? skipForNow : discardChanges

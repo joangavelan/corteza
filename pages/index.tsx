@@ -133,6 +133,7 @@ const Home: NextPage = () => {
         <Modal setOpen={setOpenSettings}>
           <Settings
             conditionalFields={emptyFields}
+            selectedBook={selectedBook!}
             title='Before you continue!'
             description='It seems that we were not able to collect all the necessary data for this book. Please fill in the missing fields for better tracking. (You can edit them later)'
             setOpenSettings={setOpenSettings}
