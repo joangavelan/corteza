@@ -1,0 +1,47 @@
+@import './variables';
+
+.container {
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.bookProgress {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  .imageContainer {
+    position: relative;
+    width: 10rem;
+    height: 15rem;
+    box-shadow: $box-shadow;
+
+    img {
+      user-select: none;
+    }
+  }
+
+  .stats {
+    width: 8rem;
+    color: $color-secondary-50;
+
+    .percentage {
+      font-size: 3.2rem;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+
+    .pages {
+      font-size: 1.6rem;
+      display: flex;
+      align-items: baseline;
+      gap: 2px;
+
+      .currentPage {
+        font-size: 2.7rem;
+        font-weight: 500;
+      }
+    }
+  }
+}
