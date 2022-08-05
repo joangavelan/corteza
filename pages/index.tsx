@@ -17,6 +17,8 @@ import { useRouter } from 'next/router'
 import useBooks from '@zustand/useBooks'
 import Link from 'next/link'
 import NonSSRWrapper from '@components/NonSSRWrapper'
+import useWarningMessage from '@zustand/useWarningMessage'
+import WarningMessage from '@components/WarningMessage'
 
 const Home: NextPage = () => {
   const searchQuery = useSearchQuery((state) => state.searchQuery)
@@ -24,20 +26,21 @@ const Home: NextPage = () => {
   const setSelectedBook = useSelectedBook((state) => state.setSelectedBook)
   const saveBook = useBooks((state) => state.saveBook)
   const books = useBooks((state) => state.books)
+  const warningMessage = useWarningMessage((state) => state.message)
+  const setWarningMessage = useWarningMessage((state) => state.setMessage)
   const [emptyFields, setEmptyFields] = useState<Array<keyof Book>>([])
   const [openSettings, setOpenSettings] = useState(false)
-  const [errorMessage, setErrorMessage] = useState('')
   const router = useRouter()
 
   const handleStartTracking = () => {
     if (!selectedBook) {
-      setErrorMessage('Please select a book to track')
+      setWarningMessage('Please select a book to track')
       return
     }
 
     const bookAlreadyExists = books.find((book) => book.id === selectedBook.id)
     if (bookAlreadyExists) {
-      setErrorMessage('Book already exists')
+      setWarningMessage('Book already exists')
       return
     }
 
@@ -55,14 +58,6 @@ const Home: NextPage = () => {
       router.push(`books/${selectedBook.slug}`)
     }
   }
-
-  useEffect(() => {
-    if (!!errorMessage) {
-      setTimeout(() => {
-        setErrorMessage('')
-      }, 3000)
-    }
-  }, [errorMessage])
 
   useEffect(() => {
     setSelectedBook(null)
@@ -140,8 +135,8 @@ const Home: NextPage = () => {
           />
         </Modal>
       )}
-      {/* error message */}
-      {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
+      {/* warning message */}
+      {warningMessage && <WarningMessage />}
     </div>
   )
 }
