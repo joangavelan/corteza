@@ -28,7 +28,10 @@ const Settings = ({
   const editableFields = Object.fromEntries(
     Object.entries(selectedBook)
       .filter(([key]) => !nonEditableFieldsKeys.includes(key))
-      .map(([key, value]) => [key, value.toString()])
+      .map(([key, value]) => {
+        if (value) return [key, value.toString()]
+        return [key, value]
+      })
   )
 
   const {
