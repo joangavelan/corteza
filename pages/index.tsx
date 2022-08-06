@@ -102,7 +102,7 @@ const Home: NextPage = () => {
           {/* search results */}
           {!!searchQuery.trim() && <BookSearchResults />}
         </div>
-        {/* continue reading */}
+        {/* continue tracking */}
         <NonSSRWrapper>
           <ul className={styles.booksTracking}>
             {books.map((book) => (
