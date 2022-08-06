@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import useBooks from '@zustand/useBooks'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from '@styles/Book.module.scss'
 import CircularProgress from '@components/CircularProgress'
 import BookMeta from '@components/BookMeta'
@@ -12,11 +12,13 @@ import Modal from '@components/Modal'
 import Button from '@components/Button'
 import useWarningMessage from '@zustand/useWarningMessage'
 import WarningMessage from '@components/WarningMessage'
+import LoadingScreen from '@components/LoadingScreen'
 
 const Book: NextPage = () => {
   const [pageControllerNumber, setPageControllerNumber] = useState(10)
   const [openSettings, setOpenSettings] = useState(false)
   const [openBookDeletionDialog, setOpenBookDeletionDialog] = useState(false)
+  const [loadingScreen, setLoadingScreen] = useState(true)
   const router = useRouter()
   const { slug } = router.query
   const books = useBooks((state) => state.books)
@@ -25,6 +27,17 @@ const Book: NextPage = () => {
   const removeReadPages = useBooks((state) => state.removeReadPages)
   const deleteBook = useBooks((state) => state.deleteBook)
   const warningMessage = useWarningMessage((state) => state.message)
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setLoadingScreen(false)
+    }, 2000)
+    return () => clearTimeout(handler)
+  }, [router.query.slug])
+
+  if (loadingScreen) {
+    return <LoadingScreen />
+  }
 
   if (!book) {
     return (
