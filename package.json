@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@hookform/error-message": "^2.0.0",
+    "@tanstack/react-table": "^8.5.11",
     "axios": "^0.27.2",
     "immer": "^9.0.15",
     "next": "12.1.6",
