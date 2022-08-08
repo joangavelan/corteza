@@ -13,6 +13,7 @@ import Button from '@components/Button'
 import useWarningMessage from '@zustand/useWarningMessage'
 import WarningMessage from '@components/WarningMessage'
 import LoadingScreen from '@components/LoadingScreen'
+import BookMain from '@components/BookMain'
 
 const Book: NextPage = () => {
   const [pageControllerNumber, setPageControllerNumber] = useState(10)
@@ -135,7 +136,7 @@ const Book: NextPage = () => {
           </a>
         </footer>
       </aside>
-      <main className={styles.main}></main>
+      <BookMain bookId={book.id} entries={book.entries} />
       {/* -- Dialogs-- */}
       {/* settings */}
       {openSettings && (
