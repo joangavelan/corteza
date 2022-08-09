@@ -21,19 +21,5 @@
   padding: 3rem;
   box-shadow: $box-shadow;
   margin: 2rem;
-}
-
-.icon {
-  font-size: 1.7rem;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  color: $color-secondary-500;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+  border-radius: $border-radius;
 }
