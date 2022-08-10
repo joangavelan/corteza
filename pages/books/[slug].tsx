@@ -14,6 +14,7 @@ import useWarningMessage from '@zustand/useWarningMessage'
 import WarningMessage from '@components/WarningMessage'
 import LoadingScreen from '@components/LoadingScreen'
 import BookMain from '@components/BookMain'
+import { preventNonNumericInput } from '@utils'
 
 const Book: NextPage = () => {
   const [pageControllerNumber, setPageControllerNumber] = useState(10)
@@ -52,13 +53,6 @@ const Book: NextPage = () => {
     const { value } = e.target
     if (!isNaN(Number(value))) {
       setPageControllerNumber(Number(value))
-    }
-  }
-
-  const preventNonNumericInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight']
-    if (isNaN(Number(e.key)) && !allowedKeys.includes(e.key)) {
-      e.preventDefault()
     }
   }
 
