@@ -1,0 +1,99 @@
+@import './variables';
+
+.row1 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  h2 {
+    font-size: 2.3rem;
+    color: $color-secondary-50;
+  }
+
+  .inputs {
+    display: flex;
+    gap: 2rem;
+
+    & select,
+    & input {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: $color-secondary-50;
+      border: 1px solid $color-secondary-700;
+      background-color: transparent;
+      outline: 0;
+      border-radius: $border-radius;
+      padding: 1rem 1.5rem;
+    }
+
+    .selectWrapper {
+      position: relative;
+
+      select {
+        text-transform: capitalize;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        padding-right: 2rem;
+
+        &::-ms-expand {
+          display: none;
+        }
+      }
+
+      svg {
+        font-size: 1.7rem;
+        color: $color-secondary-50;
+        position: absolute;
+        right: 1rem;
+        top: 49%;
+        transform: translateY(-50%);
+        pointer-events: none;
+      }
+    }
+
+    input {
+      position: relative;
+      width: 6rem;
+      text-align: center;
+
+      &::placeholder {
+        color: $color-secondary-400;
+      }
+    }
+  }
+}
+
+.row2 {
+  margin: 3rem 0;
+
+  .textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.7rem;
+    color: $color-secondary-50;
+    background-color: transparent;
+    resize: none;
+
+    &::-webkit-scrollbar {
+      width: 7px;
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 4px;
+      background-color: $color-primary-100;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $color-primary-500;
+      border-radius: 4px;
+    }
+  }
+}
+
+.buttons {
+  width: max-content;
+  display: flex;
+  gap: 2rem;
+  margin: 0 auto;
+}
