@@ -1,4 +1,4 @@
-import { Book } from '@models'
+import { Book, Entry } from '@models'
 import create from 'zustand'
 import { persist } from 'zustand/middleware'
 
@@ -9,6 +9,9 @@ interface State {
   updateBook: (id: string, data: Partial<Book>) => void
   addReadPages: (id: string, pages: number) => void
   removeReadPages: (id: string, pages: number) => void
+  addEntry: (bookId: string, entry: Entry) => void
+  removeEntry: (bookId: string, entryId: string) => void
+  updateEntry: (bookId: string, entryId: string, data: Partial<Entry>) => void
 }
 
 const useBooks = create<State>()(
@@ -46,6 +49,44 @@ const useBooks = create<State>()(
           books: state.books.map((book) => {
             if (book.id === id) {
               return { ...book, currentPage: book.currentPage - pages }
+            }
+            return book
+          })
+        })),
+      addEntry: (bookId, entry) =>
+        set((state) => ({
+          books: state.books.map((book) => {
+            if (book.id === bookId) {
+              return { ...book, entries: [...book.entries, entry] }
+            }
+            return book
+          })
+        })),
+      removeEntry: (bookId, entryId) =>
+        set((state) => ({
+          books: state.books.map((book) => {
+            if (book.id === bookId) {
+              return {
+                ...book,
+                entries: book.entries.filter((entry) => entry.id !== entryId)
+              }
+            }
+            return book
+          })
+        })),
+      updateEntry: (bookId, entryId, data) =>
+        set((state) => ({
+          books: state.books.map((book) => {
+            if (book.id === bookId) {
+              return {
+                ...book,
+                entries: book.entries.map((entry) => {
+                  if (entry.id === entryId) {
+                    return { ...entry, ...data }
+                  }
+                  return entry
+                })
+              }
             }
             return book
           })
