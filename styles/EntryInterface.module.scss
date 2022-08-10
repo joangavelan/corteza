@@ -89,6 +89,12 @@
       border-radius: 4px;
     }
   }
+
+  .errorMessage {
+    color: $color-danger-500;
+    font-size: 1.45rem;
+    margin-top: 0.5rem;
+  }
 }
 
 .buttons {

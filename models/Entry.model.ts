@@ -2,6 +2,6 @@ export interface Entry {
   id: string
   description: string
   type: 'idea' | 'note' | 'quote' | 'other'
-  page: number
+  page: string
   createdAt: string
 }

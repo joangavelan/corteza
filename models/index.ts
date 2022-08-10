@@ -4,6 +4,8 @@ export * from './BookPreview.model';
 export * from './Button.model';
 export * from './CircularProgressProps.model';
 export * from './Entry.model';
+export * from './EntryFormData.model';
+export * from './EntryInterfaceProps';
 export * from './Heading.model';
 export * from './ProgressProvider.model';
 export * from './SelectedBook.model';
