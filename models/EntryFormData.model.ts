@@ -1,5 +1,3 @@
 import { Entry } from './Entry.model'
 
-export type EntryFormData = Partial<
-  Pick<Entry, 'page' | 'description' | 'type'>
->
+export type EntryFormData = Pick<Entry, 'page' | 'description' | 'type'>

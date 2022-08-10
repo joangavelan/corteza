@@ -11,7 +11,10 @@ import { useEffect } from 'react'
 const EntryInterface = ({
   setOpen,
   onSubmit,
-  defaultValues = {}
+  defaultValues = {
+    description: '',
+    type: 'note'
+  }
 }: EntryInterfaceProps) => {
   const {
     register,
