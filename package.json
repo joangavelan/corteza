@@ -15,6 +15,7 @@
     "@hookform/error-message": "^2.0.0",
     "@tanstack/react-table": "^8.5.11",
     "axios": "^0.27.2",
+    "date-fns": "^2.29.1",
     "immer": "^9.0.15",
     "next": "12.1.6",
     "react": "18.2.0",
@@ -24,6 +25,7 @@
     "react-hook-form": "^7.33.1",
     "react-icons": "^4.4.0",
     "slugify": "^1.6.5",
+    "uuid": "^8.3.2",
     "zustand": "^4.0.0-rc.1"
   },
   "devDependencies": {
@@ -42,6 +44,7 @@
     "@types/node": "18.0.0",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.5",
+    "@types/uuid": "^8.3.4",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
     "eslint": "8.18.0",
