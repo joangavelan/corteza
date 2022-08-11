@@ -12,6 +12,7 @@ const EntryInterface = ({
   setOpen,
   onSubmit,
   defaultValues = {
+    page: '',
     description: '',
     type: 'note'
   }
