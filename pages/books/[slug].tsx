@@ -13,7 +13,7 @@ import Button from '@components/Button'
 import useWarningMessage from '@zustand/useWarningMessage'
 import WarningMessage from '@components/WarningMessage'
 import LoadingScreen from '@components/LoadingScreen'
-import BookMain from '@components/BookMain'
+import Main from '@components/Main'
 import { preventNonNumericInput } from '@utils'
 
 const Book: NextPage = () => {
@@ -130,7 +130,8 @@ const Book: NextPage = () => {
           </a>
         </footer>
       </aside>
-      <BookMain bookId={book.id} entries={book.entries} />
+      {/* main section */}
+      <Main bookId={book.id} entriesLength={book.entries.length} />
       {/* -- Dialogs-- */}
       {/* settings */}
       {openSettings && (

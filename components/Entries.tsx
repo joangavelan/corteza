@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import styles from '@styles/Entries.module.scss'
 import { Entry } from '@models'
 import {
@@ -7,10 +6,7 @@ import {
   getCoreRowModel,
   useReactTable
 } from '@tanstack/react-table'
-
-interface EntriesProps {
-  entries: Entry[]
-}
+import useBooks from '@zustand/useBooks'
 
 const columnHelper = createColumnHelper<Entry>()
 
@@ -27,7 +23,7 @@ const columns = [
   }),
   columnHelper.accessor((row) => row.page, {
     id: 'page',
-    cell: (info) => <i>{info.getValue()}</i>,
+    cell: (info) => <i>{info.getValue() || '-'}</i>,
     header: () => <span>Page</span>
   }),
   columnHelper.accessor((row) => row.createdAt, {
@@ -37,11 +33,13 @@ const columns = [
   })
 ]
 
-const Entries = ({ entries }: EntriesProps) => {
-  const [data, setData] = useState(() => [...entries])
+const Entries = ({ bookId }: { bookId: string }) => {
+  const books = useBooks((state) => state.books)
+  const book = books.find((b) => b.id === bookId)
+  const entries = book?.entries || []
 
   const table = useReactTable({
-    data,
+    data: entries,
     columns,
     getCoreRowModel: getCoreRowModel()
   })

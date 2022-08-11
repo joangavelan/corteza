@@ -2,23 +2,18 @@ import { useState } from 'react'
 import Button from '@components/Button'
 import styles from '@styles/Book.module.scss'
 import { FaPlus } from 'react-icons/fa'
-import { Entry } from '@models'
 import { BiSearchAlt2 } from 'react-icons/bi'
 import Entries from './Entries'
 import Credits from './Credits'
-import EntryInterface from './EntryInterface'
+import AddEntry from './AddEntry'
+import { MainProps } from '@models'
 
-interface BookMainProps {
-  bookId: string
-  entries: Entry[]
-}
-
-const BookMain = ({ bookId, entries }: BookMainProps) => {
-  const [openEntryInterface, setOpenEntryInterface] = useState(false)
+const Main = ({ bookId, entriesLength }: MainProps) => {
+  const [openAddEntry, setOpenAddEntry] = useState(false)
 
   return (
     <main className={styles.main}>
-      {/* INIT HEADER */}
+      {/* header */}
       <div className={styles.mainHeader}>
         <h2>Entries</h2>
         <Button
@@ -27,26 +22,26 @@ const BookMain = ({ bookId, entries }: BookMainProps) => {
           type='button'
           text='Add Entry'
           Icon={FaPlus}
-          onClick={setOpenEntryInterface}
+          onClick={setOpenAddEntry}
         />
-        <div className={styles.entryCounter}>0 entries</div>
+        <div className={styles.entryCounter}>{entriesLength} entries</div>
       </div>
-      {/* END HEADER */}
 
-      {/* INIT SEARCH BAR */}
+      {/* search bar */}
       <div className={styles.searchBar}>
         <BiSearchAlt2 />
         <input type='search' placeholder='Search for an entry' />
       </div>
-      {/* END SEARCH BAR */}
 
-      <Entries entries={entries} />
+      {/* entries table */}
+      <Entries bookId={bookId} />
 
-      {openEntryInterface && <EntryInterface setOpen={setOpenEntryInterface} />}
+      {/* add entry */}
+      {openAddEntry && <AddEntry setOpen={setOpenAddEntry} bookId={bookId} />}
 
       <Credits />
     </main>
   )
 }
 
-export default BookMain
+export default Main
