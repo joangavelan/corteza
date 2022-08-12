@@ -1,15 +1,14 @@
-import React from 'react'
+import { useState } from 'react'
 import { BsThreeDotsVertical } from 'react-icons/bs'
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu'
 import styles from '@styles/EntryOptions.module.scss'
 import '@szhsin/react-menu/dist/transitions/slide.css'
 import { Entry } from '@models'
+import OpenEntry from './OpenEntry'
 
-interface EntryOptionsProps {
-  entry: Entry
-}
+const EntryOptions = ({ entry }: { entry: Entry }) => {
+  const [openEntry, setOpenEntry] = useState(false)
 
-const EntryOptions = ({ entry }: EntryOptionsProps) => {
   return (
     <td>
       <Menu
@@ -26,9 +25,10 @@ const EntryOptions = ({ entry }: EntryOptionsProps) => {
           </MenuButton>
         }
       >
-        <MenuItem onClick={() => console.log(entry)}>Open</MenuItem>
+        <MenuItem onClick={() => setOpenEntry(true)}>Open</MenuItem>
         <MenuItem>Delete</MenuItem>
       </Menu>
+      {openEntry && <OpenEntry setOpen={setOpenEntry} entry={entry} />}
     </td>
   )
 }

@@ -9,6 +9,7 @@ export * from './EntryFormData.model';
 export * from './EntryInterfaceProps';
 export * from './Heading.model';
 export * from './Main.model';
+export * from './OpenEntryProps.model';
 export * from './ProgressProvider.model';
 export * from './SelectedBook.model';
 export * from './Setting.model';
