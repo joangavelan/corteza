@@ -8,6 +8,7 @@
   min-height: 0;
   border: 1px solid $color-gray-300;
   border-radius: $border-radius;
+  overflow: scroll;
 }
 
 .table {
@@ -29,6 +30,18 @@
 
   th {
     padding: 1rem;
+    .header {
+      position: relative;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      svg {
+        font-size: 1.5rem;
+        position: absolute;
+        transform: translateX(3.5px) translateY(1px);
+      }
+    }
   }
 }
 

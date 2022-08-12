@@ -7,9 +7,14 @@ import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
-  useReactTable
+  useReactTable,
+  SortingState,
+  getSortedRowModel,
+  ColumnDef
 } from '@tanstack/react-table'
 import EntryOptions from './EntryOptions'
+import { useState } from 'react'
+import { BsFillCaretUpFill, BsFillCaretDownFill } from 'react-icons/bs'
 
 const columnHelper = createColumnHelper<Entry>()
 
@@ -37,11 +42,17 @@ const Entries = ({ bookId }: { bookId: string }) => {
   const books = useBooks((state) => state.books)
   const book = books.find((b) => b.id === bookId)
   const entries = book?.entries || []
+  const [sorting, setSorting] = useState<SortingState>([])
 
   const table = useReactTable({
     data: entries,
     columns,
-    getCoreRowModel: getCoreRowModel()
+    state: {
+      sorting
+    },
+    onSortingChange: setSorting,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel()
   })
 
   return (
@@ -57,12 +68,23 @@ const Entries = ({ bookId }: { bookId: string }) => {
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
                 <th key={header.id}>
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
+                  {header.isPlaceholder ? null : (
+                    <div
+                      onClick={header.column.getToggleSortingHandler()}
+                      className={styles.header}
+                    >
+                      {flexRender(
                         header.column.columnDef.header,
                         header.getContext()
                       )}
+                      {
+                        {
+                          asc: <BsFillCaretUpFill />,
+                          desc: <BsFillCaretDownFill />
+                        }[(header.column.getIsSorted() as string) ?? null]
+                      }
+                    </div>
+                  )}
                 </th>
               ))}
             </tr>
@@ -80,7 +102,7 @@ const Entries = ({ bookId }: { bookId: string }) => {
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}
-                <EntryOptions />
+                <EntryOptions entry={entries[+row.id]} />
               </tr>
             ))
           ) : (

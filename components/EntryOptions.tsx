@@ -3,8 +3,13 @@ import { BsThreeDotsVertical } from 'react-icons/bs'
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu'
 import styles from '@styles/EntryOptions.module.scss'
 import '@szhsin/react-menu/dist/transitions/slide.css'
+import { Entry } from '@models'
 
-const EntryOptions = () => {
+interface EntryOptionsProps {
+  entry: Entry
+}
+
+const EntryOptions = ({ entry }: EntryOptionsProps) => {
   return (
     <td>
       <Menu
@@ -21,7 +26,7 @@ const EntryOptions = () => {
           </MenuButton>
         }
       >
-        <MenuItem>Open</MenuItem>
+        <MenuItem onClick={() => console.log(entry)}>Open</MenuItem>
         <MenuItem>Delete</MenuItem>
       </Menu>
     </td>
