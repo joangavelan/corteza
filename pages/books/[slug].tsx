@@ -15,6 +15,7 @@ import WarningMessage from '@components/WarningMessage'
 import LoadingScreen from '@components/LoadingScreen'
 import Main from '@components/Main'
 import { preventNonNumericInput } from '@utils'
+import useCurrentBookId from '@zustand/useCurrentBookId'
 
 const Book: NextPage = () => {
   const [pageControllerNumber, setPageControllerNumber] = useState(10)
@@ -29,6 +30,7 @@ const Book: NextPage = () => {
   const removeReadPages = useBooks((state) => state.removeReadPages)
   const deleteBook = useBooks((state) => state.deleteBook)
   const warningMessage = useWarningMessage((state) => state.message)
+  const setCurrentBookId = useCurrentBookId((state) => state.setId)
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -36,6 +38,12 @@ const Book: NextPage = () => {
     }, 2000)
     return () => clearTimeout(handler)
   }, [router.query.slug])
+
+  useEffect(() => {
+    if (book) {
+      setCurrentBookId(book.id)
+    }
+  }, [book, setCurrentBookId])
 
   if (!book) {
     return (
