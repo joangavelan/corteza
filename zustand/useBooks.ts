@@ -1,4 +1,4 @@
-import { Book, Entry } from '@models'
+import { Book, Entry, EntryFormData } from '@models'
 import create from 'zustand'
 import { persist } from 'zustand/middleware'
 
@@ -11,7 +11,7 @@ interface State {
   removeReadPages: (id: string, pages: number) => void
   addEntry: (bookId: string, entry: Entry) => void
   removeEntry: (bookId: string, entryId: string) => void
-  updateEntry: (bookId: string, entryId: string, data: Partial<Entry>) => void
+  updateEntry: (bookId: string, entryId: string, data: EntryFormData) => void
 }
 
 const useBooks = create<State>()(
