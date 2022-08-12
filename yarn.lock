@@ -2639,6 +2639,14 @@
     regenerator-runtime "^0.13.7"
     resolve-from "^5.0.0"
 
+"@szhsin/react-menu@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@szhsin/react-menu/-/react-menu-3.1.2.tgz#3a791e7e6c672d113c298985bec5185e9c7aa8a7"
+  integrity sha512-NUnU429a3jXtRD4xxk8EsR4yRSuhZPWAkI+4P4K63LQPUZGVE7adVKtEmlyOpd8CRQ7aoUz1ZLr1VmR1nZi6GQ==
+  dependencies:
+    prop-types "^15.7.2"
+    react-transition-state "^1.1.4"
+
 "@tanstack/react-table@^8.5.11":
   version "8.5.11"
   resolved "https://registry.yarnpkg.com/@tanstack/react-table/-/react-table-8.5.11.tgz#544f551f15412087edfc2df01bed9697aab4651f"
@@ -9106,6 +9114,11 @@ react-syntax-highlighter@^15.4.5:
     lowlight "^1.17.0"
     prismjs "^1.27.0"
     refractor "^3.6.0"
+
+react-transition-state@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/react-transition-state/-/react-transition-state-1.1.4.tgz#113224eaa27e0ff81661305e44d5e0348cdf61ac"
+  integrity sha512-6nQLWWx95gYazCm6OdtD1zGbRiirvVXPrDtHAGsYb4xs9spMM7bA8Vx77KCpjL8PJ8qz1lXFGz2PTboCSvt7iw==
 
 react@18.2.0:
   version "18.2.0"
