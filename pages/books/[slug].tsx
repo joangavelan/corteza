@@ -37,15 +37,24 @@ const Book: NextPage = () => {
     return () => clearTimeout(handler)
   }, [router.query.slug])
 
-  if (loadingScreen) {
-    return <LoadingScreen />
-  }
-
   if (!book) {
     return (
       <div>
         <h1>Book not found</h1>
       </div>
+    )
+  }
+
+  if (loadingScreen) {
+    return (
+      <>
+        <Head>
+          <title>{book.title}</title>
+          <meta name='description' content={`Tracking ${book.title}`} />
+          <link rel='icon' href='/favicon.ico' />
+        </Head>
+        <LoadingScreen />
+      </>
     )
   }
 
