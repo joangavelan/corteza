@@ -1,35 +1,35 @@
 import styles from '@styles/Entries.module.scss'
 import { Entry } from '@models'
+import useBooks from '@zustand/useBooks'
+import EntryIcon from './EntryIcon'
+import { formatDistanceToNowStrict } from 'date-fns'
 import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
   useReactTable
 } from '@tanstack/react-table'
-import useBooks from '@zustand/useBooks'
+import EntryOptions from './EntryOptions'
 
 const columnHelper = createColumnHelper<Entry>()
 
 const columns = [
-  columnHelper.accessor((row) => row.type, {
-    id: 'type',
-    header: () => <span>Type</span>,
-    cell: (info) => <i>{info.getValue()}</i>
+  columnHelper.accessor('type', {
+    header: 'Type',
+    cell: (info) => <EntryIcon type={info.getValue()} />
   }),
-  columnHelper.accessor((row) => row.description, {
-    id: 'description',
-    header: () => <span>Description</span>,
-    cell: (info) => <i>{info.getValue()}</i>
+  columnHelper.accessor('description', {
+    header: 'Description',
+    cell: (info) => info.getValue()
   }),
-  columnHelper.accessor((row) => row.page, {
-    id: 'page',
-    cell: (info) => <i>{info.getValue() || '-'}</i>,
-    header: () => <span>Page</span>
+  columnHelper.accessor('page', {
+    header: 'Page',
+    cell: (info) => info.getValue() || '-'
   }),
-  columnHelper.accessor((row) => row.createdAt, {
-    id: 'createdAt',
-    cell: (info) => <i>{info.getValue()}</i>,
-    header: () => <span>Created At</span>
+  columnHelper.accessor('createdAt', {
+    header: 'Created At',
+    cell: (info) =>
+      formatDistanceToNowStrict(info.getValue(), { addSuffix: true })
   })
 ]
 
@@ -46,7 +46,11 @@ const Entries = ({ bookId }: { bookId: string }) => {
 
   return (
     <div className={styles.container}>
-      <table className={styles.table}>
+      <table
+        className={styles.table}
+        //
+        style={{ height: !!entries.length ? 'auto' : '100%' }}
+      >
         {/* INIT THEAD */}
         <thead className={styles.thead}>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -76,12 +80,13 @@ const Entries = ({ bookId }: { bookId: string }) => {
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}
+                <EntryOptions />
               </tr>
             ))
           ) : (
             <tr>
               <td colSpan={4} className={styles.noRowsMessage}>
-                <p>No rows to show</p>
+                <p>No entries to show</p>
               </td>
             </tr>
           )}
