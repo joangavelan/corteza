@@ -1,7 +1,7 @@
 import React from 'react'
 import useBooks from '@zustand/useBooks'
 import EntryInterface from './EntryInterface'
-import { EntryFormData } from '@models/EntryFormData.model'
+import { EntryFormData } from '@models'
 import { v4 as uuidv4 } from 'uuid'
 import { AddEntryProps } from '@models'
 

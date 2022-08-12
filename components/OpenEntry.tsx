@@ -1,4 +1,4 @@
-import { EntryFormData } from '@models/EntryFormData.model'
+import { EntryFormData } from '@models'
 import React from 'react'
 import EntryInterface from './EntryInterface'
 import useBooks from '@zustand/useBooks'

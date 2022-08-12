@@ -1,4 +1,4 @@
-import { BookMetaProps } from '@models/BookMeta.model'
+import { BookMetaProps } from '@models'
 import React from 'react'
 import styles from '@styles/BookMeta.module.scss'
 import RatingStars from './RatingStars'
