@@ -57,7 +57,7 @@ const useBooks = create<State>()(
         set((state) => ({
           books: state.books.map((book) => {
             if (book.id === bookId) {
-              return { ...book, entries: [...book.entries, entry] }
+              return { ...book, entries: [entry, ...book.entries] }
             }
             return book
           })
