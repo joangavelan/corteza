@@ -111,3 +111,7 @@ export interface ConfirmationDialogProps {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
   onConfirm: () => void
 }
+
+export interface SidebarProps {
+  book: Book
+}
