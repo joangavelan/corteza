@@ -3,17 +3,17 @@
 
 .container {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .sidebar {
   width: 40%;
-  height: 100%;
   background-color: $color-secondary-800;
   padding: 4rem 3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 3rem;
 
   .header {
     display: flex;
@@ -61,30 +61,30 @@
       }
     }
   }
-}
 
-.footer {
-  font-size: 1.5rem;
-  display: flex;
-  color: $color-secondary-300;
-  margin: 0 auto;
+  .footer {
+    font-size: 1.5rem;
+    display: flex;
+    color: $color-secondary-300;
+    margin: 0 auto;
 
-  & > * {
-    cursor: pointer;
-    text-align: center;
-    line-height: 1.6;
+    & > * {
+      cursor: pointer;
+      text-align: center;
+      line-height: 1.6;
 
-    &:hover {
-      text-decoration: underline;
-      color: $color-secondary-50;
-    }
+      &:hover {
+        text-decoration: underline;
+        color: $color-secondary-50;
+      }
 
-    &:nth-child(2) {
-      border-width: 0 1px 0 1px;
-      border-style: solid;
-      border-color: $color-secondary-300;
-      padding: 0 2rem;
-      margin: 0 2rem;
+      &:nth-child(2) {
+        border-width: 0 1px 0 1px;
+        border-style: solid;
+        border-color: $color-secondary-300;
+        padding: 0 2rem;
+        margin: 0 2rem;
+      }
     }
   }
 }
@@ -94,7 +94,7 @@
   flex-direction: column;
   gap: 4rem;
   width: 60%;
-  height: 100%;
+  height: 100vh;
   background-color: $color-secondary-50;
   padding: 4rem 3rem;
 
@@ -105,7 +105,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 2rem;
+    padding-bottom: 2.5rem;
 
     h2 {
       font-size: 2.4rem;
@@ -150,6 +150,48 @@
       top: 50%;
       left: 1.2rem;
       transform: translateY(-50%);
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint-laptop) {
+  .sidebar {
+    width: 50%;
+  }
+  .main {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: $breakpoint-tablet) {
+  .container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    gap: 5rem;
+  }
+  .main {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: $breakpoint-phone) {
+  .sidebar {
+    .header {
+      .logo {
+        font-size: 1.8rem;
+      }
+
+      .pageController {
+        input {
+          width: 5rem;
+          font-size: 1.7rem;
+        }
+        svg {
+          font-size: 2rem;
+        }
+      }
     }
   }
 }

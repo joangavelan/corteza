@@ -45,3 +45,26 @@
     }
   }
 }
+
+@media only screen and (max-width: $breakpoint-laptop) {
+  .container {
+    max-width: 35rem;
+  }
+  .bookProgress {
+    .imageContainer {
+      width: 8rem;
+      height: 12rem;
+    }
+    .stats {
+      .percentage {
+        font-size: 2.7rem;
+      }
+      .pages {
+        font-size: 1.4rem;
+        .currentPage {
+          font-size: 2.2rem;
+        }
+      }
+    }
+  }
+}

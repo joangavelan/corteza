@@ -15,7 +15,8 @@
 .title {
   font-size: 2.3rem;
   margin-bottom: 1.5rem;
-  line-height: 1.5;
+  line-height: 1.55;
+  font-weight: 600;
 }
 
 .ratingAuthorWrapper {
@@ -55,6 +56,22 @@
     span {
       font-size: 1.6rem;
       line-height: 1.5;
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint-phone) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .ratingAuthorWrapper {
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .author {
+      white-space: normal;
+      line-height: 1.55;
     }
   }
 }
