@@ -3,10 +3,7 @@ const path = require('path')
 module.exports = {
   stories: [
     '../stories/**/*.stories.mdx',
-    '../stories/**/*.stories.@(js|jsx|ts|tsx)',
-    // makes it possible to use files from these folders in the storybook environment
-    '../components/**/*@(js|jsx|ts|tsx)',
-    '../styles/**/*@(css|scss|sass)'
+    '../stories/**/*.stories.@(js|jsx|ts|tsx)'
   ],
   addons: [
     '@storybook/addon-links',
