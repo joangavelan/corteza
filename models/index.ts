@@ -102,6 +102,7 @@ export interface SettingsProps {
 
 export interface DeleteEntryProps {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
+  entryId: string
 }
 
 export interface ConfirmationDialogProps {

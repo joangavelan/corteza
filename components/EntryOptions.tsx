@@ -5,9 +5,11 @@ import styles from '@styles/EntryOptions.module.scss'
 import '@szhsin/react-menu/dist/transitions/slide.css'
 import { Entry } from '@models'
 import OpenEntry from './OpenEntry'
+import DeleteEntry from './DeleteEntry'
 
 const EntryOptions = ({ entry }: { entry: Entry }) => {
   const [openEntry, setOpenEntry] = useState(false)
+  const [openDeleteEntry, setOpenDeleteEntry] = useState(false)
 
   return (
     <td>
@@ -26,9 +28,12 @@ const EntryOptions = ({ entry }: { entry: Entry }) => {
         }
       >
         <MenuItem onClick={() => setOpenEntry(true)}>Open</MenuItem>
-        <MenuItem>Delete</MenuItem>
+        <MenuItem onClick={() => setOpenDeleteEntry(true)}>Delete</MenuItem>
       </Menu>
       {openEntry && <OpenEntry setOpen={setOpenEntry} entry={entry} />}
+      {openDeleteEntry && (
+        <DeleteEntry setOpen={setOpenDeleteEntry} entryId={entry.id} />
+      )}
     </td>
   )
 }
