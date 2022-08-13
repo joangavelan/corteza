@@ -9,13 +9,13 @@ import BookMeta from '@components/BookMeta'
 import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai'
 import Settings from '@components/Settings'
 import Modal from '@components/Modal'
-import Button from '@components/Button'
 import useWarningMessage from '@zustand/useWarningMessage'
 import WarningMessage from '@components/WarningMessage'
 import LoadingScreen from '@components/LoadingScreen'
 import Main from '@components/Main'
 import { preventNonNumericInput } from '@utils'
 import useCurrentBookId from '@zustand/useCurrentBookId'
+import ConfirmationDialog from '@components/ConfirmationDialog'
 
 const Book: NextPage = () => {
   const [pageControllerNumber, setPageControllerNumber] = useState(10)
@@ -162,26 +162,12 @@ const Book: NextPage = () => {
       )}
       {/* book deletion */}
       {openBookDeletionDialog && (
-        <Modal setOpen={setOpenBookDeletionDialog}>
-          <div className={styles.bookDelitionDialog}>
-            <h3>Are you sure you want to delete this book?</h3>
-            <p>All of the data related to this book will be lost.</p>
-            <Button
-              size='medium'
-              color='dark'
-              type='button'
-              onClick={() => setOpenBookDeletionDialog(false)}
-              text='Cancel'
-            />
-            <Button
-              size='medium'
-              color='light'
-              type='button'
-              onClick={handleBookDeletion}
-              text='Delete'
-            />
-          </div>
-        </Modal>
+        <ConfirmationDialog
+          title='Are you sure you want to delete this book?'
+          description='All data related to this book will be lost.'
+          onConfirm={handleBookDeletion}
+          setOpen={setOpenBookDeletionDialog}
+        />
       )}
       {/* feedback message */}
       {warningMessage && <WarningMessage />}
