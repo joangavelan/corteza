@@ -1,0 +1,23 @@
+@import './variables';
+
+.container {
+  text-align: center;
+  line-height: 1.45;
+
+  h3 {
+    font-size: 2.3rem;
+    color: $color-secondary-50;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.7rem;
+    color: $color-secondary-300;
+    margin-bottom: 2rem;
+  }
+
+  button {
+    display: inline-block;
+    margin: 1rem;
+  }
+}
