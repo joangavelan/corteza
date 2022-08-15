@@ -2,7 +2,7 @@ import { Entry } from '@models'
 import { GoLightBulb, GoNote, GoQuote } from 'react-icons/go'
 import { BsChatSquareDots } from 'react-icons/bs'
 
-const EntryIcon = ({ type }: { type: Entry['type'] }) => {
+const EntryTypeIcon = ({ type }: { type: Entry['type'] }) => {
   switch (type) {
     case 'note':
       return <GoNote />
@@ -15,4 +15,4 @@ const EntryIcon = ({ type }: { type: Entry['type'] }) => {
   }
 }
 
-export default EntryIcon
+export default EntryTypeIcon

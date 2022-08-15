@@ -1,7 +1,7 @@
 import styles from '@styles/Entries.module.scss'
 import { Entry } from '@models'
 import useBooks from '@zustand/useBooks'
-import EntryIcon from './EntryIcon'
+import EntryTypeIcon from './EntryTypeIcon'
 import { formatDistanceToNowStrict } from 'date-fns'
 import {
   createColumnHelper,
@@ -21,7 +21,7 @@ const columnHelper = createColumnHelper<Entry>()
 const columns = [
   columnHelper.accessor('type', {
     header: 'Type',
-    cell: (info) => <EntryIcon type={info.getValue()} />
+    cell: (info) => <EntryTypeIcon type={info.getValue()} />
   }),
   columnHelper.accessor('description', {
     header: 'Description',
