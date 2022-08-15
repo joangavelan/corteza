@@ -2,7 +2,6 @@ import { useState } from 'react'
 import Button from '@components/Button'
 import styles from '@styles/Book.module.scss'
 import { FaPlus } from 'react-icons/fa'
-import { BiSearchAlt2 } from 'react-icons/bi'
 import Entries from './Entries'
 import Credits from './Credits'
 import AddEntry from './AddEntry'
@@ -25,12 +24,6 @@ const Main = ({ bookId, entriesLength }: MainProps) => {
           onClick={setOpenAddEntry}
         />
         <div className={styles.entryCounter}>{entriesLength} entries</div>
-      </div>
-
-      {/* search bar */}
-      <div className={styles.searchBar}>
-        <BiSearchAlt2 />
-        <input type='search' placeholder='Search for an entry' />
       </div>
 
       {/* entries table */}

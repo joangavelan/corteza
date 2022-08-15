@@ -14,6 +14,30 @@ $tbodyRowHeight: $tbodyMaxHeight / 11; // 11 entry rows
   justify-content: space-between;
   gap: 3rem;
 
+  .searchBar {
+    position: relative;
+
+    input {
+      @include search-bar-styles;
+      font-size: 1.5rem;
+      border: 1px solid $color-gray-300;
+      color: $color-secondary-900;
+      padding-inline-start: 4rem;
+      &::placeholder {
+        color: $color-secondary-500;
+      }
+    }
+
+    svg {
+      position: absolute;
+      font-size: 2.1rem;
+      color: $color-secondary-500;
+      top: 50%;
+      left: 1.2rem;
+      transform: translateY(-50%);
+    }
+  }
+
   .tableContainer {
     border: 1px solid $color-gray-300;
     border-radius: $border-radius;

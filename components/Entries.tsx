@@ -1,25 +1,29 @@
+import { useEffect, useState } from 'react'
 import styles from '@styles/Entries.module.scss'
-import { Entry } from '@models'
 import useBooks from '@zustand/useBooks'
 import EntryTypeIcon from './EntryTypeIcon'
+import EntryOptions from './EntryOptions'
+import { Entry } from '@models'
 import { formatDistanceToNowStrict } from 'date-fns'
 import {
+  useReactTable,
   createColumnHelper,
   flexRender,
   getCoreRowModel,
-  useReactTable,
-  SortingState,
   getSortedRowModel,
-  getPaginationRowModel
+  getPaginationRowModel,
+  getFilteredRowModel,
+  SortingState,
+  FilterFn
 } from '@tanstack/react-table'
-import EntryOptions from './EntryOptions'
-import { useEffect, useState } from 'react'
+import { rankItem } from '@tanstack/match-sorter-utils'
 import { BsFillCaretUpFill, BsFillCaretDownFill } from 'react-icons/bs'
 import {
   BiChevronLeft,
   BiChevronsLeft,
   BiChevronsRight,
-  BiChevronRight
+  BiChevronRight,
+  BiSearchAlt2
 } from 'react-icons/bi'
 
 const columnHelper = createColumnHelper<Entry>()
@@ -47,22 +51,38 @@ const columns = [
   })
 ]
 
+const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
+  // Rank the item
+  const itemRank = rankItem(row.getValue(columnId), value)
+  // Store the itemRank info
+  addMeta({
+    itemRank
+  })
+  // Return if the item should be filtered in/out
+  return itemRank.passed
+}
+
 const Entries = ({ bookId }: { bookId: string }) => {
   const books = useBooks((state) => state.books)
   const book = books.find((b) => b.id === bookId)
   const entries = book?.entries || []
   const [sorting, setSorting] = useState<SortingState>([])
+  const [globalFilter, setGlobalFilter] = useState('')
 
   const table = useReactTable({
     data: entries,
     columns,
     state: {
-      sorting
+      sorting,
+      globalFilter
     },
-    onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
-    getPaginationRowModel: getPaginationRowModel()
+    getPaginationRowModel: getPaginationRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    globalFilterFn: fuzzyFilter,
+    onGlobalFilterChange: setGlobalFilter,
+    onSortingChange: setSorting
   })
 
   useEffect(() => {
@@ -71,6 +91,17 @@ const Entries = ({ bookId }: { bookId: string }) => {
 
   return (
     <div className={styles.container}>
+      {/* search */}
+      <div className={styles.searchBar}>
+        <BiSearchAlt2 />
+        <input
+          type='search'
+          value={globalFilter}
+          onChange={(e) => setGlobalFilter(String(e.target.value))}
+          placeholder='Search for an entry'
+        />
+      </div>
+
       {/* table */}
       <div className={styles.tableContainer}>
         <table style={{ height: !!entries.length ? 'auto' : '100%' }}>
