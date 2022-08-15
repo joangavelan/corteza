@@ -10,11 +10,17 @@ import {
   useReactTable,
   SortingState,
   getSortedRowModel,
-  ColumnDef
+  getPaginationRowModel
 } from '@tanstack/react-table'
 import EntryOptions from './EntryOptions'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { BsFillCaretUpFill, BsFillCaretDownFill } from 'react-icons/bs'
+import {
+  BiChevronLeft,
+  BiChevronsLeft,
+  BiChevronsRight,
+  BiChevronRight
+} from 'react-icons/bi'
 
 const columnHelper = createColumnHelper<Entry>()
 
@@ -25,16 +31,19 @@ const columns = [
   }),
   columnHelper.accessor('description', {
     header: 'Description',
-    cell: (info) => info.getValue()
+    cell: (info) => <span>{info.getValue()}</span>
   }),
   columnHelper.accessor('page', {
     header: 'Page',
-    cell: (info) => info.getValue() || '-'
+    cell: (info) => <span>{info.getValue() || '-'}</span>
   }),
   columnHelper.accessor('createdAt', {
     header: 'Created At',
-    cell: (info) =>
-      formatDistanceToNowStrict(info.getValue(), { addSuffix: true })
+    cell: (info) => (
+      <span>
+        {formatDistanceToNowStrict(info.getValue(), { addSuffix: true })}
+      </span>
+    )
   })
 ]
 
@@ -52,69 +61,112 @@ const Entries = ({ bookId }: { bookId: string }) => {
     },
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel()
+    getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel()
   })
+
+  useEffect(() => {
+    table.setPageSize(11)
+  }, [table])
 
   return (
     <div className={styles.container}>
-      <table
-        className={styles.table}
-        //
-        style={{ height: !!entries.length ? 'auto' : '100%' }}
-      >
-        {/* INIT THEAD */}
-        <thead className={styles.thead}>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <th key={header.id}>
-                  {header.isPlaceholder ? null : (
-                    <div
-                      onClick={header.column.getToggleSortingHandler()}
-                      className={styles.header}
-                    >
-                      {flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
-                      {
+      {/* table */}
+      <div className={styles.tableContainer}>
+        <table style={{ height: !!entries.length ? 'auto' : '100%' }}>
+          {/* thead */}
+          <thead>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <th key={header.id}>
+                    {header.isPlaceholder ? null : (
+                      <span onClick={header.column.getToggleSortingHandler()}>
+                        {flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
                         {
-                          asc: <BsFillCaretUpFill />,
-                          desc: <BsFillCaretDownFill />
-                        }[(header.column.getIsSorted() as string) ?? null]
-                      }
-                    </div>
-                  )}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        {/* END THEAD */}
-
-        {/* INIT TBODY */}
-        <tbody className={styles.tbody}>
-          {entries.length > 0 ? (
-            table.getRowModel().rows.map((row) => (
-              <tr key={row.id}>
-                {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
+                          {
+                            asc: <BsFillCaretUpFill />,
+                            desc: <BsFillCaretDownFill />
+                          }[(header.column.getIsSorted() as string) ?? null]
+                        }
+                      </span>
+                    )}
+                  </th>
                 ))}
-                <EntryOptions entry={entries[+row.id]} />
+                <th></th>
               </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan={4} className={styles.noRowsMessage}>
-                <p>No entries to show</p>
-              </td>
-            </tr>
-          )}
-        </tbody>
-        {/* END TBODY */}
-      </table>
+            ))}
+          </thead>
+
+          {/* tbody */}
+          <tbody>
+            {entries.length > 0 ? (
+              table.getRowModel().rows.map((row) => (
+                <tr key={row.id}>
+                  {row.getVisibleCells().map((cell) => (
+                    <td key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </td>
+                  ))}
+                  <EntryOptions entry={entries[+row.id]} />
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan={4} className={styles.noRowsFeedback}>
+                  <p>No entries to show</p>
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+
+      {/* pagination */}
+      <div className={styles.pagination}>
+        <div className={styles.pageIndicator}>
+          <span>Page </span>
+          <strong>
+            {table.getPageCount() > 0
+              ? `${
+                  table.getState().pagination.pageIndex + 1
+                } of ${table.getPageCount()}`
+              : 0}
+          </strong>
+        </div>
+        <div className={styles.navigationButtons}>
+          <button
+            onClick={() => table.setPageIndex(0)}
+            disabled={!table.getCanPreviousPage()}
+          >
+            <BiChevronsLeft />
+          </button>
+          <button
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            <BiChevronLeft />
+          </button>
+          <button
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            <BiChevronRight />
+          </button>
+          <button
+            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+            disabled={!table.getCanNextPage()}
+          >
+            <BiChevronsRight />
+          </button>
+        </div>
+      </div>
     </div>
   )
 }
