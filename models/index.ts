@@ -115,3 +115,8 @@ export interface ConfirmationDialogProps {
 export interface SidebarProps {
   book: Book
 }
+
+export interface MainHeaderProps {
+  entriesLength: number
+  bookId: string
+}
