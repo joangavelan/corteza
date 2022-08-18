@@ -39,4 +39,4 @@ const BookMeta = ({
   )
 }
 
-export default BookMeta
+export default React.memo(BookMeta)

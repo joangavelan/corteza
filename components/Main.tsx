@@ -1,3 +1,4 @@
+import React from 'react'
 import styles from '@styles/Book.module.scss'
 import Entries from './Entries'
 import Credits from './Credits'
@@ -18,4 +19,4 @@ const Main = ({ bookId, entriesLength }: MainProps) => {
   )
 }
 
-export default Main
+export default React.memo(Main)
