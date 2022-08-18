@@ -8,7 +8,6 @@ import { useRouter } from 'next/router'
 import { SidebarProps } from '@models'
 import useBooks from '@zustand/useBooks'
 import Settings from '@components/Settings'
-import Modal from '@components/Modal'
 import ConfirmationDialog from '@components/ConfirmationDialog'
 
 const Sidebar = ({ book }: SidebarProps) => {
@@ -93,13 +92,11 @@ const Sidebar = ({ book }: SidebarProps) => {
       </footer>
       {/* settings */}
       {openSettings && (
-        <Modal setOpen={setOpenSettings}>
-          <Settings
-            selectedBook={book}
-            setOpenSettings={setOpenSettings}
-            title='Book Settings'
-          />
-        </Modal>
+        <Settings
+          selectedBook={book}
+          setOpenSettings={setOpenSettings}
+          title='Book Settings'
+        />
       )}
       {/* book deletion dialog */}
       {openBookDeletionDialog && (

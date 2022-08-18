@@ -10,7 +10,6 @@ import BookSearchResults from '@components/BookSearchResults'
 import useSelectedBook from '@zustand/useSelectedBook'
 import SelectedBook from '@components/SelectedBook'
 import { Book } from '@models'
-import Modal from '@components/Modal'
 import Settings from '@components/Settings'
 import useSearchQuery from '@zustand/useSearchQuery'
 import { useRouter } from 'next/router'
@@ -125,15 +124,13 @@ const Home: NextPage = () => {
         </NonSSRWrapper>
       </div>
       {openSettings && (
-        <Modal setOpen={setOpenSettings}>
-          <Settings
-            conditionalFields={emptyFields}
-            selectedBook={selectedBook!}
-            title='Before you continue!'
-            description='It seems that we were not able to collect all the necessary data for this book. Please fill in the missing fields for better tracking. (You can edit them later)'
-            setOpenSettings={setOpenSettings}
-          />
-        </Modal>
+        <Settings
+          conditionalFields={emptyFields}
+          selectedBook={selectedBook!}
+          title='Before you continue!'
+          description='It seems that we were not able to collect all the necessary data for this book. Please fill in the missing fields for better tracking. (You can edit them later)'
+          setOpenSettings={setOpenSettings}
+        />
       )}
       {/* warning message */}
       {warningMessage && <WarningMessage />}
