@@ -27,7 +27,6 @@ const settings: Setting[] = [
       message: 'unnecessary spaces'
     },
     validate: (value: string) =>
-      !!!value.trim() ||
       (value.length >= 3 && value.length <= 50) ||
       'min 3 characters, max 50 characters'
   },
@@ -42,7 +41,6 @@ const settings: Setting[] = [
       message: 'numbers with one decimal point only'
     },
     validate: (value: string) =>
-      !!!value.trim() ||
       (Number(value) >= 1 && Number(value) <= 5) ||
       'rating must be between 1 and 5'
   },
@@ -56,8 +54,7 @@ const settings: Setting[] = [
       value: /^([^ ]+ ?){1,}[^ ]{0,2}$/,
       message: 'unnecessary spaces'
     },
-    validate: (value: string) =>
-      !!!value.trim() || isValidURL(value) || 'please enter a valid URL'
+    validate: (value: string) => isValidURL(value) || 'please enter a valid URL'
   },
   {
     id: 'pageCount',
@@ -84,9 +81,8 @@ const settings: Setting[] = [
       message: 'please enter a valid year'
     },
     validate: (value: string) =>
-      !!!value.trim() ||
-      (Number(value) >= 1000 && Number(value) <= new Date().getFullYear()) ||
-      'must be a valid year'
+      (Number(value) >= 1 && Number(value) <= new Date().getFullYear()) ||
+      'please enter a valid year'
   },
   {
     id: 'category',
@@ -99,7 +95,6 @@ const settings: Setting[] = [
       message: 'unnecessary spaces'
     },
     validate: (value: string) =>
-      !!!value.trim() ||
       (value.length >= 3 && value.length <= 20) ||
       'min 3 characters, max 20 characters'
   }
