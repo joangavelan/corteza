@@ -18,6 +18,12 @@
   width: 75rem;
   max-width: 100%;
   padding: 3rem;
+
+  h1 {
+    font-size: 3.2rem;
+    color: white;
+    text-align: center;
+  }
 }
 
 .searchContainer {
@@ -100,6 +106,11 @@
 }
 
 @media screen and (max-width: $breakpoint-phone) {
+  .content h1 {
+    font-size: 2.4rem;
+    line-height: 1.5;
+  }
+
   .searchContainer {
     flex-direction: column;
 

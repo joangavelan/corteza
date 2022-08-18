@@ -55,12 +55,6 @@ export interface EntryInterfaceProps {
   defaultValues?: EntryFormData
 }
 
-export interface HeadingProps {
-  variant: 'search' | 'modal' | 'notes'
-  title: string
-  description?: string
-}
-
 export interface MainProps {
   bookId: string
   entriesLength: number

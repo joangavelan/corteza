@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import Button from '@components/Button'
-import Heading from '@components/Heading'
 import SearchBar from '@components/SearchBar'
 import type { NextPage } from 'next'
 import Head from 'next/head'
@@ -73,10 +72,7 @@ const Home: NextPage = () => {
       {/* content */}
       <div className={styles.content}>
         {/* heading */}
-        <Heading
-          variant='search'
-          title="Search For A Book You'd Like to Read & Track"
-        />
+        <h1>{"Search For A Book You'd Like to Read & Track"}</h1>
         {/* search */}
         <div className={styles.searchContainer}>
           {selectedBook ? (
