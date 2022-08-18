@@ -25,6 +25,7 @@ import {
   BiChevronRight,
   BiSearchAlt2
 } from 'react-icons/bi'
+import useCurrentBookId from '@zustand/useCurrentBookId'
 
 const columnHelper = createColumnHelper<Entry>()
 
@@ -62,10 +63,10 @@ const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
   return itemRank.passed
 }
 
-const Entries = ({ bookId }: { bookId: string }) => {
-  const books = useBooks((state) => state.books)
-  const book = books.find((b) => b.id === bookId)
-  const entries = book?.entries || []
+const Entries = () => {
+  const bookId = useCurrentBookId((state) => state.id)
+  const entries =
+    useBooks((state) => state.books.find((b) => b.id === bookId)?.entries) || []
   const [sorting, setSorting] = useState<SortingState>([])
   const [globalFilter, setGlobalFilter] = useState('')
 

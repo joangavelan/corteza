@@ -12,7 +12,7 @@ const Main = ({ bookId, entriesLength }: MainProps) => {
       <MainHeader entriesLength={entriesLength} bookId={bookId} />
 
       {/* entries table */}
-      <Entries bookId={bookId} />
+      <Entries />
 
       <Credits />
     </main>
