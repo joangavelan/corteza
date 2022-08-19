@@ -33,6 +33,22 @@ const Book: NextPage = () => {
     }
   }, [book, setCurrentBookId])
 
+  if (loadingScreen) {
+    return (
+      <>
+        <Head>
+          <title>{book?.title || 'Corteza'}</title>
+          <meta
+            name='description'
+            content={`Tracking ${book?.title || 'Corteza'}`}
+          />
+          <link rel='icon' href='/open-book.png' />
+        </Head>
+        <LoadingScreen />
+      </>
+    )
+  }
+
   if (!book) {
     return (
       <div>
@@ -41,25 +57,12 @@ const Book: NextPage = () => {
     )
   }
 
-  if (loadingScreen) {
-    return (
-      <>
-        <Head>
-          <title>{book.title}</title>
-          <meta name='description' content={`Tracking ${book.title}`} />
-          <link rel='icon' href='/favicon.ico' />
-        </Head>
-        <LoadingScreen />
-      </>
-    )
-  }
-
   return (
     <div className={styles.container}>
       <Head>
         <title>{book.title}</title>
         <meta name='description' content={`Tracking ${book.title}`} />
-        <link rel='icon' href='/favicon.ico' />
+        <link rel='icon' href='/open-book.png' />
       </Head>
 
       <Sidebar book={book} />

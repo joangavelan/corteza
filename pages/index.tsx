@@ -67,7 +67,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Corteza</title>
         <meta name='description' content='Book tracking app' />
-        <link rel='icon' href='/favicon.ico' />
+        <link rel='icon' href='/open-book.png' />
       </Head>
       {/* content */}
       <div className={styles.content}>
