@@ -2,7 +2,7 @@ import { Book } from '@models'
 import slugify from 'slugify'
 
 export const adaptBookSearchResults = (googleBooks: any[]): Book[] => {
-  return googleBooks
+  const books = googleBooks
     .filter((googleBook) => googleBook.volumeInfo?.title)
     .map((googleBook) => ({
       id: googleBook.id,
@@ -17,4 +17,11 @@ export const adaptBookSearchResults = (googleBooks: any[]): Book[] => {
       currentPage: 0,
       entries: []
     }))
+
+  // remove duplicate book results
+  const uniqueBooks = books.filter(
+    (v, i, a) => a.findIndex((v2) => v2.id === v.id) === i
+  )
+
+  return uniqueBooks
 }
